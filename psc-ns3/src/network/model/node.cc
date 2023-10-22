@@ -136,6 +136,8 @@ Node::AddDevice (Ptr<NetDevice> device)
   m_devices.push_back (device);
   device->SetNode (this);
   device->SetIfIndex (index);
+  //// debug logs
+  std::cout << "node.cc" << std::endl;
   device->SetReceiveCallback (MakeCallback (&Node::NonPromiscReceiveFromDevice, this));
   Simulator::ScheduleWithContext (GetId (), Seconds (0.0), 
                                   &NetDevice::Initialize, device);
@@ -237,6 +239,7 @@ Node::DoInitialize (void)
 
   Object::DoInitialize ();
 }
+////Registers Protocol handler
 
 void
 Node::RegisterProtocolHandler (ProtocolHandler handler, 
@@ -309,6 +312,9 @@ Node::NonPromiscReceiveFromDevice (Ptr<NetDevice> device, Ptr<const Packet> pack
                                    const Address &from)
 {
   NS_LOG_FUNCTION (this << device << packet << protocol << &from);
+  //// Debug logs
+  //// Calling the callback function
+  std::cout << "Called the callback function Node::NonPromiscReceiveFromDevice\n";
   return ReceiveFromDevice (device, packet, protocol, from, device->GetAddress (), NetDevice::PacketType (0), false);
 }
 
@@ -336,6 +342,8 @@ Node::ReceiveFromDevice (Ptr<NetDevice> device, Ptr<const Packet> packet, uint16
             {
               if (promiscuous == i->promiscuous)
                 {
+                  ////debug logs
+                  std::cout << (i->device)->GetNode()->GetId() << " " << "Protocol " << i->protocol << " " << "Promiscuous " << i->promiscuous << "\n";
                   i->handler (device, packet, protocol, from, to, packetType);
                   found = true;
                 }

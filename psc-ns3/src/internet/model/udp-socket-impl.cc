@@ -403,6 +403,8 @@ UdpSocketImpl::Connect (const Address & address)
       m_defaultPort = transport.GetPort ();
       SetIpTos (transport.GetTos ());
       m_connected = true;
+      //// debug statement
+      std::cout << "Connect Function: m_connected=" << m_connected << " logs " << address << "\n";
       NotifyConnectionSucceeded ();
     }
   else if (Inet6SocketAddress::IsMatchingType(address) == true)
@@ -415,6 +417,8 @@ UdpSocketImpl::Connect (const Address & address)
     }
   else
     {
+      //// debug statement
+      std::cout << "Connection failed: logs " << address << "\n";
       NotifyConnectionFailed ();
       return -1;
     }
@@ -487,6 +491,8 @@ UdpSocketImpl::DoSend (Ptr<Packet> p)
 int
 UdpSocketImpl::DoSendTo (Ptr<Packet> p, Ipv4Address dest, uint16_t port, uint8_t tos)
 {
+  //// Send logs
+  std::cout << "In UDP::DoSendTo() 4 args\n";
   NS_LOG_FUNCTION (this << p << dest << port << (uint16_t) tos);
   if (m_boundnetdevice)
     {
@@ -573,6 +579,9 @@ UdpSocketImpl::DoSendTo (Ptr<Packet> p, Ipv4Address dest, uint16_t port, uint8_t
   // out of the "default" interface; here we send it out all interfaces
   if (dest.IsBroadcast ())
     {
+
+      //// debug logs
+      std::cout << "In dest.IsBroadcast()\n";
       if (!m_allowBroadcast)
         {
           m_errno = ERROR_OPNOTSUPP;
@@ -594,7 +603,7 @@ UdpSocketImpl::DoSendTo (Ptr<Packet> p, Ipv4Address dest, uint16_t port, uint8_t
             }
           NS_LOG_LOGIC ("Sending one copy from " << addri << " to " << dest);
           m_udp->Send (p->Copy (), addri, dest,
-                       m_endPoint->GetLocalPort (), port);
+                        m_endPoint->GetLocalPort (), port);
           NotifyDataSent (p->GetSize ());
           NotifySend (GetTxAvailable ());
         }
@@ -603,6 +612,10 @@ UdpSocketImpl::DoSendTo (Ptr<Packet> p, Ipv4Address dest, uint16_t port, uint8_t
     }
   else if (m_endPoint->GetLocalAddress () != Ipv4Address::GetAny ())
     {
+      //// It is set to GetAny() in onOffApplication
+      //// TODO: How does the first packet then get the source?
+      //// debug logs
+      std::cout << "getlocaladdress!=getany " << m_endPoint->GetLocalAddress() << std::endl;
       m_udp->Send (p->Copy (), m_endPoint->GetLocalAddress (), dest,
                    m_endPoint->GetLocalPort (), port, 0);
       NotifyDataSent (p->GetSize ());
@@ -611,6 +624,9 @@ UdpSocketImpl::DoSendTo (Ptr<Packet> p, Ipv4Address dest, uint16_t port, uint8_t
     }
   else if (ipv4->GetRoutingProtocol () != 0)
     {
+
+      //// Debug Logs
+      std::cout << "In GetRoutingProtocol!=0\n";
       Ipv4Header header;
       header.SetDestination (dest);
       header.SetProtocol (UdpL4Protocol::PROT_NUMBER);
@@ -619,6 +635,10 @@ UdpSocketImpl::DoSendTo (Ptr<Packet> p, Ipv4Address dest, uint16_t port, uint8_t
       Ptr<NetDevice> oif = m_boundnetdevice; //specify non-zero if bound to a specific device
       // TBD-- we could cache the route and just check its validity
       route = ipv4->GetRoutingProtocol ()->RouteOutput (p, header, oif, errno_); 
+      
+      //// debug logs
+      std::cout << "Printing routing table state\n";
+      ipv4->GetRoutingProtocol()->PrintRoutingTable(ns3::Create<ns3::OutputStreamWrapper>(&std::cout),ns3::Time::Unit(4));
       if (route != 0)
         {
           NS_LOG_LOGIC ("Route exists");
@@ -637,7 +657,8 @@ UdpSocketImpl::DoSendTo (Ptr<Packet> p, Ipv4Address dest, uint16_t port, uint8_t
                     }
                 }
             }
-
+          ////Printing source of the packet
+          std::cout << "Source of packet:" << route->GetSource() << "\n";
           header.SetSource (route->GetSource ());
           m_udp->Send (p->Copy (), header.GetSource (), header.GetDestination (),
                        m_endPoint->GetLocalPort (), port, route);
@@ -832,7 +853,8 @@ Ptr<Packet>
 UdpSocketImpl::Recv (uint32_t maxSize, uint32_t flags)
 {
   NS_LOG_FUNCTION (this << maxSize << flags);
-
+  //// Receiving packet from udp buffer
+  std::cout << "Recv udp 2 arg " << std::endl;
   Address fromAddress;
   Ptr<Packet> packet = RecvFrom (maxSize, flags, fromAddress);
   return packet;
@@ -861,6 +883,12 @@ UdpSocketImpl::RecvFrom (uint32_t maxSize, uint32_t flags,
     {
       p = 0;
     }
+    //// Receiving packet from udp buffer
+    std::cout << "In UDP::RecvFrom(maxsize,flags,&fromAddress)\n";
+    p->Print(std::cout);
+    std::cout << "From Address:" << InetSocketAddress::ConvertFrom(fromAddress).GetIpv4 () << "\n"; 
+    p->PrintPacketTags(std::cout);
+
   return p;
 }
 
@@ -995,6 +1023,7 @@ UdpSocketImpl::BindToNetDevice (Ptr<NetDevice> netdevice)
   return;
 }
 
+
 void 
 UdpSocketImpl::ForwardUp (Ptr<Packet> packet, Ipv4Header header, uint16_t port,
                           Ptr<Ipv4Interface> incomingInterface)
@@ -1038,6 +1067,8 @@ UdpSocketImpl::ForwardUp (Ptr<Packet> packet, Ipv4Header header, uint16_t port,
 
   if ((m_rxAvailable + packet->GetSize ()) <= m_rcvBufSize)
     {
+      ////debug log
+      std::cout << "Pushed packet into m_deliveryQueue, UDPsocket::ForwardUp function\n";
       Address address = InetSocketAddress (header.GetSource (), port);
       m_deliveryQueue.push (std::make_pair (packet, address));
       m_rxAvailable += packet->GetSize ();

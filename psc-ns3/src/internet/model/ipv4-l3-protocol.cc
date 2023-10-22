@@ -570,6 +570,14 @@ void
 Ipv4L3Protocol::Receive ( Ptr<NetDevice> device, Ptr<const Packet> p, uint16_t protocol, const Address &from,
                           const Address &to, NetDevice::PacketType packetType)
 {
+  ////debug logs
+  std::cout << "Called the callback function Ipv4L3Protocol::Receive from m_handlers(Node Protocol Handler)\n";
+  std::cout << "Packet from " << from << " received on node " << 
+                m_node->GetId () << std::endl;
+  std::cout << "In function Ipv4L3Protocol::Receive\n";
+  std::cout << "Printing packet state as of now\n\n";
+  p->Print(std::cout);
+  std::cout << "\n\n";
   NS_LOG_FUNCTION (this << device << p << protocol << from << to << packetType);
 
   NS_LOG_LOGIC ("Packet from " << from << " received on node " << 
@@ -646,6 +654,11 @@ Ipv4L3Protocol::Receive ( Ptr<NetDevice> device, Ptr<const Packet> p, uint16_t p
         }
     }
 
+  //// Debug Logs
+  std::cout << "Before Socket->ForwardUp\n" << "ipHeader->" << ipHeader << "\n";
+  std::cout << "packet->";
+  packet->Print(std::cout);
+  std::cout << "\n\n";
   for (SocketList::iterator i = m_sockets.begin (); i != m_sockets.end (); ++i)
     {
       NS_LOG_LOGIC ("Forwarding to raw socket"); 

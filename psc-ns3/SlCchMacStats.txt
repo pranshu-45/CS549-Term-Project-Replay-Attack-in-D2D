@@ -1,0 +1,9 @@
+% time	cellId	IMSI	RNTI	frame	sframe	scPrdStartFr	scPrdStartSf	resPscch	sizeTb	pscchRbLen	pscchStartRb	hopping	hoppingInfo	psschRbLen	psschStartRb	iTrp	mcs	l1GroupDstId	dropped
+3038	0	1	1	305	3	305	1	26	6	1	3	0	255	5	17	0	16	255	0
+3042	0	1	1	305	7	305	1	26	6	1	31	0	255	5	17	0	16	255	0
+3077	0	1	1	309	2	309	1	169	6	1	21	0	255	5	19	0	16	255	0
+3078	0	1	1	309	3	309	1	169	6	1	49	0	255	5	19	0	16	255	0
+4040	0	3	3	405	5	405	1	151	6	1	46	0	255	5	41	0	16	255	0
+4043	0	3	3	405	8	405	1	151	6	1	18	0	255	5	41	0	16	255	0
+4079	0	3	3	409	4	409	1	123	6	1	15	0	255	5	33	0	16	255	0
+4081	0	3	3	409	6	409	1	123	6	1	43	0	255	5	33	0	16	255	0

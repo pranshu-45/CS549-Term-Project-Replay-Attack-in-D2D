@@ -720,10 +720,13 @@ void
 Buffer::CopyData (std::ostream *os, uint32_t size) const
 {
   NS_LOG_FUNCTION (this << &os << size);
+  std::cout << "size" << size << "\n";
   if (size > 0)
     {
       uint32_t tmpsize = std::min (m_zeroAreaStart-m_start, size);
+      std::cout << "tempsize " << tmpsize << "\n";
       os->write ((const char*)(m_data->m_data + m_start), tmpsize);
+      std::cout << (m_data->m_data + m_start) << "\n";
       if (size > tmpsize) 
         { 
           size -= m_zeroAreaStart-m_start;

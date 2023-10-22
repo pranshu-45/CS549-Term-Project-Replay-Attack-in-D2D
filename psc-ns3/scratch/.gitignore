@@ -4,3 +4,4 @@
 !subdir/
 !scratch-simulator.cc
 !CMakeLists.txt
+!lte-sl-out-of-covrg-comm.cc

@@ -190,6 +190,9 @@ void PacketSink::StopApplication ()     // Called at time specified by Stop
 
 void PacketSink::HandleRead (Ptr<Socket> socket)
 {
+
+  //// Debug statement
+  std::cout << "In handle Read function\n";
   NS_LOG_FUNCTION (this << socket);
   Ptr<Packet> packet;
   Address from;
@@ -200,6 +203,15 @@ void PacketSink::HandleRead (Ptr<Socket> socket)
         { //EOF
           break;
         }
+
+      //// pushed the received packet
+      receivedPackets.push_back(packet);
+      std::cout << packet->ToString() << "\n";
+
+      // std::cout << "Before copy data\n";
+      // packet->CopyData(&std::cout, 220);
+      // std::cout << "After Copy data\n";
+
       m_totalRx += packet->GetSize ();
       if (InetSocketAddress::IsMatchingType (from))
         {
@@ -209,6 +221,14 @@ void PacketSink::HandleRead (Ptr<Socket> socket)
                        << InetSocketAddress::ConvertFrom(from).GetIpv4 ()
                        << " port " << InetSocketAddress::ConvertFrom (from).GetPort ()
                        << " total Rx " << m_totalRx << " bytes");
+
+                      //// debug statement
+                       std::cout << "At time " << Simulator::Now ().As (Time::S)
+                       << " packet sink received "
+                       <<  packet->GetSize () << " bytes from "
+                       << InetSocketAddress::ConvertFrom(from).GetIpv4 ()
+                       << " port " << InetSocketAddress::ConvertFrom (from).GetPort ()
+                       << " total Rx " << m_totalRx << " bytes\n";
         }
       else if (Inet6SocketAddress::IsMatchingType (from))
         {
@@ -223,6 +243,8 @@ void PacketSink::HandleRead (Ptr<Socket> socket)
       if (!m_rxTrace.IsEmpty () || !m_rxTraceWithAddresses.IsEmpty () ||
           (!m_rxTraceWithSeqTsSize.IsEmpty () && m_enableSeqTsSizeHeader))
         {
+          //// debug statement
+          std::cout << "In here\n";
           Ipv4PacketInfoTag interfaceInfo;
           Ipv6PacketInfoTag interface6Info;
           if (packet->RemovePacketTag (interfaceInfo))
@@ -240,6 +262,9 @@ void PacketSink::HandleRead (Ptr<Socket> socket)
           m_rxTrace (packet, from);
           m_rxTraceWithAddresses (packet, from, localAddress);
 
+          //// debug statement
+          std::cout << m_rxTraceWithSeqTsSize.IsEmpty() << "\n" << m_enableSeqTsSizeHeader << "\n";
+
           if (!m_rxTraceWithSeqTsSize.IsEmpty () && m_enableSeqTsSizeHeader)
             {
               PacketReceived (packet, from, localAddress);
@@ -252,6 +277,8 @@ void
 PacketSink::PacketReceived (const Ptr<Packet> &p, const Address &from,
                             const Address &localAddress)
 {
+  //// debug statement
+  std::cout << "In Packet Received\n";
   SeqTsSizeHeader header;
   Ptr<Packet> buffer;
 

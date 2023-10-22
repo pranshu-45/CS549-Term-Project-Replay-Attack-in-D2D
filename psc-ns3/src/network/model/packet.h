@@ -267,7 +267,11 @@ public:
    * is identical to the serialized packet contained in the buffer 
    * and is magically deserialized for you
    * 
-   * \param buffer the serialized packet to be created
+   * \param buffer the serialized packet to be created\brief Deserialize and remove the header from the internal buffer.
+   *
+   * This method invokes Header::Deserialize (begin) and should be used for
+   * fixed-length headers.
+   *
    * \param size the size of the packet for deserialization
    * \param magic allows packet deserialization; 
    *        asserts when set to false
