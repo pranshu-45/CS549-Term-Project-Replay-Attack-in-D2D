@@ -1,0 +1,3 @@
+[submodule "psc-ns3-submodule"]
+	path = psc-ns3-submodule
+	url = ./psc-ns3
