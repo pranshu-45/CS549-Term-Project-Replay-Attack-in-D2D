@@ -877,6 +877,9 @@ TcpSocketBase::Recv (uint32_t maxSize, uint32_t flags)
       return Create<Packet> (); // Send EOF on connection close
     }
   Ptr<Packet> outPacket = m_tcb->m_rxBuffer->Extract (maxSize);
+  //// Receive Packet from tcp buffer
+  std::cout << "In TCP Socket Recv function\n";
+  outPacket->PrintPacketTags(std::cout);
   return outPacket;
 }
 

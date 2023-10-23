@@ -1133,9 +1133,15 @@ LteUeMac::DoSetSlCommRxPools (std::list<Ptr<SidelinkRxCommResourcePool> > pools)
 void
 LteUeMac::DoReceivePhyPdu (Ptr<Packet> p)
 {
+  //// Receiving packet in the physical layer state
+  std::cout << "In function LteUeMac::DoReceivePhyPdu\n";
+  p->Print(std::cout);
+  std::cout << "\n";
   NS_LOG_FUNCTION (this);
   LteRadioBearerTag tag;
   p->RemovePacketTag (tag);
+  //// std::cout << "Printing Source TagId:" << tag.GetSourceL2Id() << "\n";
+  //// std::cout << "Printing Destination TagId:" << tag.GetDestinationL2Id() << "\n";
   if (tag.GetSourceL2Id () == 0)
     {
       if (tag.GetRnti () == m_rnti)
@@ -1160,12 +1166,14 @@ LteUeMac::DoReceivePhyPdu (Ptr<Packet> p)
     }
   else
     {
+      //// Checking whether packet is received in sidelink or not
       //Sidelink packet. Perform L2 filtering
       NS_LOG_INFO ("Received Sidelink packet");
       std::list <uint32_t>::iterator dstIt;
       bool found = false;
       for (dstIt = m_sidelinkDestinations.begin (); dstIt != m_sidelinkDestinations.end (); dstIt++)
         {
+          //// std::cout << "Destination Ids:" << (*dstIt) << "\n";
           if ((*dstIt) == tag.GetDestinationL2Id ())
             {
               //the destination is a group we want to listen to

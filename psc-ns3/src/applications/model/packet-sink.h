@@ -29,6 +29,7 @@
 #include "ns3/inet-socket-address.h"
 #include "ns3/seq-ts-size-header.h"
 #include <unordered_map>
+#include <bits/stdc++.h>
 
 namespace ns3 {
 
@@ -71,6 +72,9 @@ class Packet;
 class PacketSink : public Application 
 {
 public:
+
+  //// added a data structure to store received packets
+  std::vector<Ptr<Packet>> receivedPackets;
   /**
    * \brief Get the type ID.
    * \return the object TypeId

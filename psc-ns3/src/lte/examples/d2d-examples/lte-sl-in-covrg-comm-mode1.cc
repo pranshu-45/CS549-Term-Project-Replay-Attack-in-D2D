@@ -57,6 +57,8 @@ UePacketTrace (Ptr<OutputStreamWrapper> stream, const Address &localAddrs, std::
 {
   std::ostringstream oss;
   *stream->GetStream () << Simulator::Now ().GetNanoSeconds () / (double) 1e9 << "\t" << context << "\t" << p->GetSize () << "\t";
+  p->Print(*stream->GetStream());
+
   if (InetSocketAddress::IsMatchingType (srcAddrs))
     {
       oss << InetSocketAddress::ConvertFrom (srcAddrs).GetIpv4 ();
@@ -194,10 +196,13 @@ int main (int argc, char *argv[])
   NodeContainer enbNode;
   enbNode.Create (1);
   NS_LOG_INFO ("eNb node id = [" << enbNode.Get (0)->GetId () << "]");
+  std::cout << "eNb node id = [" << enbNode.Get (0)->GetId () << "]" << std::endl;
   NodeContainer ueNodes;
   ueNodes.Create (2);
   NS_LOG_INFO ("UE 1 node id = [" << ueNodes.Get (0)->GetId () << "]");
+  std::cout << "UE 1 node id = [" << ueNodes.Get (0)->GetId () << "]" << std::endl;
   NS_LOG_INFO ("UE 2 node id = [" << ueNodes.Get (1)->GetId () << "]");
+  std::cout << "UE 2 node id = [" << ueNodes.Get (1)->GetId () << "]" << std::endl;
 
   //Position of the nodes
   Ptr<ListPositionAllocator> positionAllocEnb = CreateObject<ListPositionAllocator> ();
@@ -397,9 +402,11 @@ int main (int argc, char *argv[])
     }
 
   NS_LOG_INFO ("Enabling Sidelink traces...");
+  std::cout << "Enabling sidelink traces..." << std::endl;
   lteHelper->EnableSidelinkTraces ();
 
   NS_LOG_INFO ("Starting simulation...");
+  std::cout << "Starting simulation..." << std::endl;
 
   Simulator::Stop (simTime);
 

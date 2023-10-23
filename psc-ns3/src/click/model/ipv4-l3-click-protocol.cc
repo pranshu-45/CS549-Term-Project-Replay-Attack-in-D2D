@@ -831,6 +831,7 @@ Ipv4L3ClickProtocol::Receive ( Ptr<NetDevice> device, Ptr<const Packet> p, uint1
 void
 Ipv4L3ClickProtocol::LocalDeliver (Ptr<const Packet> packet, Ipv4Header const&ip, uint32_t iif)
 {
+  p->
   NS_LOG_FUNCTION (this << packet << &ip);
   Ptr<Packet> p = packet->Copy (); // need to pass a non-const packet up
 
