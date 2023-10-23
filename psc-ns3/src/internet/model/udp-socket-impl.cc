@@ -635,10 +635,8 @@ UdpSocketImpl::DoSendTo (Ptr<Packet> p, Ipv4Address dest, uint16_t port, uint8_t
       Ptr<NetDevice> oif = m_boundnetdevice; //specify non-zero if bound to a specific device
       // TBD-- we could cache the route and just check its validity
       route = ipv4->GetRoutingProtocol ()->RouteOutput (p, header, oif, errno_); 
-      
-      //// debug logs
-      std::cout << "Printing routing table state\n";
-      ipv4->GetRoutingProtocol()->PrintRoutingTable(ns3::Create<ns3::OutputStreamWrapper>(&std::cout),ns3::Time::Unit(4));
+      //// Print routing table
+      // ipv4->GetRoutingProtocol()->PrintRoutingTable(ns3::Create<ns3::OutputStreamWrapper>(&std::cout),ns3::Time::Unit(4));
       if (route != 0)
         {
           NS_LOG_LOGIC ("Route exists");

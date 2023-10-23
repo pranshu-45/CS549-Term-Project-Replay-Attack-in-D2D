@@ -77,7 +77,6 @@ Socket::CreateSocket (Ptr<Node> node, TypeId tid)
   NS_ASSERT (socketFactory != 0);
   s = socketFactory->CreateSocket ();
   NS_ASSERT (s != 0);
-  std::cout << "Creating socket, connecting to netdevice :" << s->GetBoundNetDevice() << "\n";
   return s;
 }
 

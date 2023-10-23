@@ -414,6 +414,7 @@ Ipv4RawSocketImpl::SetProtocol (uint16_t protocol)
 bool 
 Ipv4RawSocketImpl::ForwardUp (Ptr<const Packet> p, Ipv4Header ipHeader, Ptr<Ipv4Interface> incomingInterface)
 {
+  
   NS_LOG_FUNCTION (this << *p << ipHeader << incomingInterface);
   if (m_shutdownRecv)
     {
@@ -430,6 +431,9 @@ Ipv4RawSocketImpl::ForwardUp (Ptr<const Packet> p, Ipv4Header ipHeader, Ptr<Ipv4
     }
 
   NS_LOG_LOGIC ("src = " << m_src << " dst = " << m_dst);
+  ////Debug log
+  std::cout << "src = " << m_src << " dst = " << m_dst << "\n";
+  std::cout << "ip header src = " << ipHeader.GetSource ()  << "ip header dst = " << ipHeader.GetDestination () << "\n";
   if ((m_src == Ipv4Address::GetAny () || ipHeader.GetDestination () == m_src) &&
       (m_dst == Ipv4Address::GetAny () || ipHeader.GetSource () == m_dst) &&
       ipHeader.GetProtocol () == m_protocol)

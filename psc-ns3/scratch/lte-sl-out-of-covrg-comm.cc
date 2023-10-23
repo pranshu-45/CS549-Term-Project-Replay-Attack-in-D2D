@@ -114,6 +114,7 @@ UePacketTrace (Ptr<OutputStreamWrapper> stream, const Address &localAddrs, std::
     //// Printing packets
     p->Print(*stream->GetStream());
     *stream->GetStream () << "\n";
+    
 }
 
 /*
@@ -157,6 +158,32 @@ void replay(Ptr<Node> ueNode,ApplicationContainer &serverApps, ApplicationContai
   std::cout << "Send status:" << m_socket->Send(packetSink->receivedPackets[0]) << "\n";
   std::cout << packetSink->receivedPackets[0]->GetUid() << "\n";
   // ueNode->GetObject<Ipv4>()
+
+}
+
+void checkLowerPacket(Ptr<Node> ueNode,ApplicationContainer &serverApps, ApplicationContainer &serverApps2){
+  ////Accessing mac level datastructure
+  // Assuming 'node' is your node of interest.
+
+  // Get the device container of the node.
+  Ptr<Node> node = serverApps2.Get (0)->GetNode (); // Your node of interest
+  Ptr<NetDevice> netDevice = node->GetDevice(0);
+
+  // Assuming you want the first device of the node.
+  // Ptr<NetDevice> netDevice = devices->Get(0);
+    
+  // Check if the device is an LTE UE device.
+  if (netDevice->GetInstanceTypeId() == LteUeNetDevice::GetTypeId()) {
+      // Cast the device to an LTE UE device.
+      Ptr<LteUeNetDevice> lteUeDevice = DynamicCast<LteUeNetDevice>(netDevice);
+
+      // Access the LteUeMac object.
+      Ptr<LteUeMac> lteUeMac = lteUeDevice->GetMac();
+      std::cout << "\n\nPrinting Mac level Received Packets\n";
+      lteUeMac->MacReceivedPacket[0]->Print(std::cout);
+      std::cout << "\n";
+      // Now, you have access to the LteUeMac object and can use its functions and data members.
+  }
 }
 
 NS_LOG_COMPONENT_DEFINE ("LteSlOutOfCovrg");
@@ -493,9 +520,13 @@ int main (int argc, char *argv[])
   Simulator::Stop (simTime);
   //// Scheduling the replay function
   Simulator::Schedule (Time(Seconds(4)),&replay,ueNodes.Get(2), serverApps, serverApps2);
+  Simulator::Schedule (Time(Seconds(5)),&checkLowerPacket,ueNodes.Get(2), serverApps, serverApps2);
   
   Simulator::Run ();
   Simulator::Destroy ();
+  
+
+
   return 0;
 
 }

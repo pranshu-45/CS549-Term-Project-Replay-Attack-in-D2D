@@ -128,7 +128,7 @@ void
 LteNetDevice::SetReceiveCallback (ReceiveCallback cb)
 {
   //// Debug logs
-  std::cout << "lte-net-device.cc in setreceivecallback" << std::endl;
+  std::cout << "lte-net-device.cc in LteNetDevice::SetReceiveCallback" << std::endl;
   // std::cout << "checking cb properties: " << cb.IsEqual << "\n";
   NS_LOG_FUNCTION (this);
   m_rxCallback = cb;
@@ -284,9 +284,9 @@ LteNetDevice::Receive (Ptr<Packet> p)
 
   // debug logs
   std::cout << "In function LteNetDevice::Receive()\n";
-  std::cout << "Printing packet state as of now\n\n";
-  p->Print(std::cout);
-  std::cout << "\n\n";
+  // std::cout << "Printing packet state as of now\n\n";
+  // p->Print(std::cout);
+  // std::cout << "\n\n";
   Ipv4Header ipv4Header;
   Ipv6Header ipv6Header;
 

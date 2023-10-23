@@ -575,9 +575,9 @@ Ipv4L3Protocol::Receive ( Ptr<NetDevice> device, Ptr<const Packet> p, uint16_t p
   std::cout << "Packet from " << from << " received on node " << 
                 m_node->GetId () << std::endl;
   std::cout << "In function Ipv4L3Protocol::Receive\n";
-  std::cout << "Printing packet state as of now\n\n";
-  p->Print(std::cout);
-  std::cout << "\n\n";
+  // std::cout << "Printing packet state as of now\n\n";
+  // p->Print(std::cout);
+  // std::cout << "\n\n";
   NS_LOG_FUNCTION (this << device << p << protocol << from << to << packetType);
 
   NS_LOG_LOGIC ("Packet from " << from << " received on node " << 
@@ -590,7 +590,8 @@ Ipv4L3Protocol::Receive ( Ptr<NetDevice> device, Ptr<const Packet> p, uint16_t p
   Ptr<Packet> packet = p->Copy ();
 
   Ptr<Ipv4Interface> ipv4Interface = m_interfaces[interface];
-
+  ////Debug logs
+  // std::cout << "ipv4Interface->IsUP() " << ipv4Interface->IsUp() << "\n";
   if (ipv4Interface->IsUp ())
     {
       m_rxTrace (packet, this, interface);
@@ -655,14 +656,15 @@ Ipv4L3Protocol::Receive ( Ptr<NetDevice> device, Ptr<const Packet> p, uint16_t p
     }
 
   //// Debug Logs
-  std::cout << "Before Socket->ForwardUp\n" << "ipHeader->" << ipHeader << "\n";
-  std::cout << "packet->";
-  packet->Print(std::cout);
-  std::cout << "\n\n";
+  // std::cout << "Before Socket->ForwardUp\n" << "ipHeader->" << ipHeader << "\n";
+  // std::cout << "packet->";
+  // packet->Print(std::cout);
+  // std::cout << "\nm_sockets size:" << m_sockets.size() << "\n\n";
   for (SocketList::iterator i = m_sockets.begin (); i != m_sockets.end (); ++i)
     {
       NS_LOG_LOGIC ("Forwarding to raw socket"); 
       Ptr<Ipv4RawSocketImpl> socket = *i;
+      std::cout << "calling forwardup " << std::endl;
       socket->ForwardUp (packet, ipHeader, ipv4Interface);
     }
 
@@ -681,6 +683,7 @@ Ipv4L3Protocol::Receive ( Ptr<NetDevice> device, Ptr<const Packet> p, uint16_t p
                                       MakeCallback (&Ipv4L3Protocol::RouteInputError, this)
                                       ))
     {
+      std::cout << "\nRouted unsuccessfully\n";
       NS_LOG_WARN ("No route found for forwarding packet.  Drop.");
       m_dropTrace (ipHeader, packet, DROP_NO_ROUTE, this, interface);
     }

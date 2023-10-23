@@ -26,7 +26,7 @@
 
 
 #include <map>
-
+#include <bits/stdc++.h>
 #include <ns3/lte-mac-sap.h>
 #include <ns3/lte-ue-cmac-sap.h>
 #include <ns3/lte-ue-phy-sap.h>
@@ -164,6 +164,7 @@ public:
    * \return pointer to the discovery transmission pool
    */
   Ptr<SidelinkTxDiscResourcePool> GetDiscTxPool ();
+  std::vector<Ptr<Packet>> MacReceivedPacket;
 
 private:
   // forwarded from MAC SAP

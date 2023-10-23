@@ -130,6 +130,8 @@ Ipv4ListRouting::RouteInput (Ptr<const Packet> p, const Ipv4Header &header, Ptr<
                              UnicastForwardCallback ucb, MulticastForwardCallback mcb, 
                              LocalDeliverCallback lcb, ErrorCallback ecb)
 {
+  //// Debug Logs
+  std::cout << "ipv4-list-routing.cc rounting input" << std::endl;
   NS_LOG_FUNCTION (this << p << header << idev << &ucb << &mcb << &lcb << &ecb);
   bool retVal = false;
   NS_LOG_LOGIC ("RouteInput logic for node: " << m_ipv4->GetObject<Node> ()->GetId ());
@@ -139,7 +141,9 @@ Ipv4ListRouting::RouteInput (Ptr<const Packet> p, const Ipv4Header &header, Ptr<
   NS_ASSERT (m_ipv4->GetInterfaceForDevice (idev) >= 0);
   uint32_t iif = m_ipv4->GetInterfaceForDevice (idev); 
 
+  ////Checks for destination ip address.
   retVal = m_ipv4->IsDestinationAddress (header.GetDestination (), iif);
+  std::cout << "Node Id:" << idev->GetNode()->GetId() << " retVal:" << retVal << "\n";
   if (retVal == true)
     {
       NS_LOG_LOGIC ("Address "<< header.GetDestination () << " is a match for local delivery");

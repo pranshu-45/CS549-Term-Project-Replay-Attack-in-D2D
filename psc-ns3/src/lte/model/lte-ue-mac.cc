@@ -1135,6 +1135,8 @@ LteUeMac::DoReceivePhyPdu (Ptr<Packet> p)
 {
   //// Receiving packet in the physical layer state
   std::cout << "In function LteUeMac::DoReceivePhyPdu\n";
+  MacReceivedPacket.push_back(p);
+  std::cout << "\n";
   p->Print(std::cout);
   std::cout << "\n";
   NS_LOG_FUNCTION (this);

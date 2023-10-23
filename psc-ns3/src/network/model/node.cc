@@ -136,8 +136,6 @@ Node::AddDevice (Ptr<NetDevice> device)
   m_devices.push_back (device);
   device->SetNode (this);
   device->SetIfIndex (index);
-  //// debug logs
-  std::cout << "node.cc" << std::endl;
   device->SetReceiveCallback (MakeCallback (&Node::NonPromiscReceiveFromDevice, this));
   Simulator::ScheduleWithContext (GetId (), Seconds (0.0), 
                                   &NetDevice::Initialize, device);
