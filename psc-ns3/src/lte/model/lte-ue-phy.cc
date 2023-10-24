@@ -650,8 +650,14 @@ LteUePhy::GetSlSpectrumPhy () const
 void
 LteUePhy::DoSendSlMacPdu (Ptr<Packet> p, LteUePhySapProvider::TransmitSlPhySduParameters params)
 {
+  std::cout << "In function LteUePhy::DoSendSlMacPdu";
+  std::cout << "\nChannel:" << params.channel 
+            << "\nparams.rbLen:" << params.rbLen 
+            << "\nparams.rbStart:" << params.rbStart
+            << "\nparams.resNo:" << params.resNo
+            << "\nparams.rv:" << params.rv << "\n";
   NS_LOG_FUNCTION (this);
-
+  std::cout << "In function LteUePhy::DoSendSlMacPdu\n";
   SetMacPdu (p);
 
   NS_ASSERT_MSG (m_packetParamsQueue.at (m_packetParamsQueue.size () - 1).size () == 0, "Error: Can only send one sidelink message per TTI");

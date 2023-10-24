@@ -4713,6 +4713,8 @@ LteUeRrc::SendSlss ()
 
           m_SendSlssTrace (m_imsi,slssid,m_txSlSyncOffsetIndicator,mibSl.inCoverage,mibSl.directFrameNo,mibSl.directSubframeNo);
 
+          ////debug log
+          std::cout << "In function LteUeRrc::SendSlss\n";
           m_macSapProvider->TransmitPdu (params);
 
         }
@@ -5295,6 +5297,8 @@ LteUeRrc::TransmitDiscoveryMessage (LteSlDiscHeader discHeader)
   params.mibslMsg = false;
   params.componentCarrierId = 0;
   params.pdu = p;
+  ////debug log
+  std::cout << "In function LteUeRrc::TransmitDiscoveryMessage\n";
   m_macSapProvider->TransmitPdu (params);
 }
 

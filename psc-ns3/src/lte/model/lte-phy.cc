@@ -188,6 +188,8 @@ LtePhy::GetRbgSize (void) const
   return m_rbgSize;
 }
 
+//// pushes the packet into the queue to send
+
 void
 LtePhy::SetMacPdu (Ptr<Packet> p)
 {

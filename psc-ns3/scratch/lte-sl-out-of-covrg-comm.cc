@@ -180,8 +180,26 @@ void checkLowerPacket(Ptr<Node> ueNode,ApplicationContainer &serverApps, Applica
       // Access the LteUeMac object.
       Ptr<LteUeMac> lteUeMac = lteUeDevice->GetMac();
       std::cout << "\n\nPrinting Mac level Received Packets\n";
-      lteUeMac->MacReceivedPacket[0]->Print(std::cout);
+      for(auto packet : lteUeMac->MacReceivedPacket){
+        packet->Print(std::cout);
+        std::cout << std::endl;
+      }
       std::cout << "\n";
+
+      
+      
+      // Create a new PacketBurst object.
+      // Ptr<PacketBurst> packetBurst = new PacketBurst(numPackets, packetSize);
+      // Ptr<PacketBurst> packetBurst = new PacketBurst()
+      // // Configure the packet burst.
+      // packetBurst->SetChannel(channel);
+      // packetBurst->SetPowerLevel(powerLevel);
+      // packetBurst->SetMcs(mcs);
+
+      // // Set the packet burst on the PHY layer.
+      // ltePhy->SetPacketBurst(packetBurst);
+      // Ptr<LtePhy> lteUePhy = lteUeDevice->GetPhy();
+      // lteUePhy->SetMacPdu(lteUeMac->MacReceivedPacket[0]);
       // Now, you have access to the LteUeMac object and can use its functions and data members.
   }
 }

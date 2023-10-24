@@ -149,6 +149,8 @@ LteRlcTm::DoNotifyTxOpportunity (LteMacSapUser::TxOpportunityParameters txOpPara
   params.componentCarrierId = txOpParams.componentCarrierId;
   params.discMsg = false;
   params.mibslMsg = false;
+  ////debug log
+  std::cout << "In function LteRlcTm::DoNotifyTxOpportunity \n";
 
   m_macSapProvider->TransmitPdu (params);
 

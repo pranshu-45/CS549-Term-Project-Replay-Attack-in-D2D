@@ -64,6 +64,7 @@ LteRlcSpecificLteMacSapUser::LteRlcSpecificLteMacSapUser ()
 void
 LteRlcSpecificLteMacSapUser::NotifyTxOpportunity (TxOpportunityParameters params)
 {
+  std::cout << "In function LteRlcSpecificLteMacSapUser::NotifyTxOpportunity\n";
   m_rlc->DoNotifyTxOpportunity (params);
 }
 
@@ -299,7 +300,8 @@ LteRlcSm::DoNotifyTxOpportunity (LteMacSapUser::TxOpportunityParameters txOpPara
                          << " LCID=" << (uint32_t) m_lcid
                          << " size=" << txOpParams.bytes);
   m_txPdu (m_rnti, m_lcid, txOpParams.bytes);
-
+  ////debug log
+  std::cout << "In function LteRlcSm::DoNotifyTxOpportunity\n";
   m_macSapProvider->TransmitPdu (params);
   ReportBufferStatus ();
 }
