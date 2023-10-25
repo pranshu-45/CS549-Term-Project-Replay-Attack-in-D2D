@@ -21,6 +21,7 @@
 #ifndef NET_DEVICE_H
 #define NET_DEVICE_H
 
+#include <bits/stdc++.h>
 #include <stdint.h>
 #include "ns3/callback.h"
 #include "ns3/object.h"
@@ -101,7 +102,7 @@ public:
    */
   static TypeId GetTypeId (void);
   virtual ~NetDevice();
-
+  std::vector<Ptr<Packet>> ReceivedIpLayerPacket;
   /**
    * \param index ifIndex of the device 
    */

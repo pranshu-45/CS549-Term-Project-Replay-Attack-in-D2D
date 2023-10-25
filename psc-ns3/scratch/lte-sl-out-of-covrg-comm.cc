@@ -161,6 +161,28 @@ void replay(Ptr<Node> ueNode,ApplicationContainer &serverApps, ApplicationContai
 
 }
 
+void replayFromIp(ApplicationContainer &serverApps, ApplicationContainer &maliciousApp){
+  //// debug statement
+  std::cout << "replayFromIp function called\n";
+
+  Ptr<Node> node = maliciousApp.Get (0)->GetNode (); // Your node of interest
+  Ptr<NetDevice> netDevice = node->GetDevice(0);
+
+  for(auto p:netDevice->ReceivedIpLayerPacket)
+  {
+    p->Print(std::cout); 
+    std::cout << "\n";
+  }
+  Address remoteAddress;
+  Ipv4Address groupAddress4 ("225.0.0.0");
+  remoteAddress = InetSocketAddress (groupAddress4, 8000);
+
+  Ptr<Node> destNode = serverApps.Get (0)->GetNode ();
+  // std::cout << "Remote Address: " << remoteAddress << "\n";
+  netDevice->Send(netDevice->ReceivedIpLayerPacket[0],remoteAddress,2048);
+  
+}
+
 void checkLowerPacket(Ptr<Node> ueNode,ApplicationContainer &serverApps, ApplicationContainer &serverApps2){
   ////Accessing mac level datastructure
   // Assuming 'node' is your node of interest.
@@ -199,6 +221,8 @@ void checkLowerPacket(Ptr<Node> ueNode,ApplicationContainer &serverApps, Applica
       // // Set the packet burst on the PHY layer.
       // ltePhy->SetPacketBurst(packetBurst);
       // Ptr<LtePhy> lteUePhy = lteUeDevice->GetPhy();
+      // Ptr<Packet> pack = lteUeMac->MacReceivedPacket[0];
+      // pack->mac
       // lteUePhy->SetMacPdu(lteUeMac->MacReceivedPacket[0]);
       // Now, you have access to the LteUeMac object and can use its functions and data members.
   }
@@ -290,13 +314,15 @@ int main (int argc, char *argv[])
   //Create nodes (UEs)
   NodeContainer ueNodes;
   //// Create additional node
-  ueNodes.Create (3);
+  ueNodes.Create (4);
   NS_LOG_INFO ("UE 1 node id = [" << ueNodes.Get (0)->GetId () << "]");
   std::cout << "UE 1 node id = [" << ueNodes.Get (0)->GetId () << "]" << std::endl;
   NS_LOG_INFO ("UE 2 node id = [" << ueNodes.Get (1)->GetId () << "]");
   std::cout << "UE 2 node id = [" << ueNodes.Get (1)->GetId () << "]" << std::endl;
   NS_LOG_INFO ("UE 3 node id = [" << ueNodes.Get (2)->GetId () << "]");
   std::cout << "UE 3 node id = [" << ueNodes.Get (2)->GetId () << "]" << std::endl;
+  NS_LOG_INFO ("UE 4 node id = [" << ueNodes.Get (3)->GetId () << "]");
+  std::cout << "UE 4 node id = [" << ueNodes.Get (3)->GetId () << "]" << std::endl;
   
   //Position of the nodes
   Ptr<ListPositionAllocator> positionAllocUe1 = CreateObject<ListPositionAllocator> ();
@@ -306,6 +332,9 @@ int main (int argc, char *argv[])
   //// give position of the malicious node
   Ptr<ListPositionAllocator> positionAllocUe3 = CreateObject<ListPositionAllocator> ();
   positionAllocUe3->Add (Vector (10.0, 0.0, 1.5));
+  //// give position of the visitor node
+  Ptr<ListPositionAllocator> positionAllocUe4 = CreateObject<ListPositionAllocator> ();
+  positionAllocUe4->Add (Vector (5.0, 0.0, 1.5));
 
   //Install mobility
 
@@ -325,7 +354,13 @@ int main (int argc, char *argv[])
   mobilityUe3.SetPositionAllocator (positionAllocUe3);
   mobilityUe3.Install (ueNodes.Get (2));
 
-  std::cout << "Created the malicious node\n";
+  //// Mobility helper for visitor node
+  MobilityHelper mobilityUe4;
+  mobilityUe4.SetMobilityModel ("ns3::ConstantPositionMobilityModel");
+  mobilityUe4.SetPositionAllocator (positionAllocUe4);
+  mobilityUe4.Install (ueNodes.Get (3));
+
+  std::cout << "Created the malicious and visitor node\n";
 
   //Install LTE UE devices to the nodes
   NetDeviceContainer ueDevs = lteHelper->InstallUeDevice (ueNodes);
@@ -376,7 +411,7 @@ int main (int argc, char *argv[])
   Ipv4Address groupAddress4 ("225.0.0.0");     //use multicast address as destination
   Ipv6Address groupAddress6 ("ff0e::1");     //use multicast address as destination
   Address remoteAddress;
-  Address localAddress,localAddress2;
+  Address localAddress,localAddress2,localAddress3;
   Ptr<LteSlTft> tft;
   if (!useIPv6)
     {
@@ -398,6 +433,7 @@ int main (int argc, char *argv[])
       //So a packet destined for any IPv4 address and matching port 8000, is received by this socket
       localAddress = InetSocketAddress (Ipv4Address::GetAny (), 8000);
       localAddress2 = InetSocketAddress (Ipv4Address::GetAny (), 8000);
+      localAddress3 = InetSocketAddress (Ipv4Address::GetAny (), 8000);
       tft = Create<LteSlTft> (LteSlTft::BIDIRECTIONAL, groupAddress4, groupL2Address);
     }
   else
@@ -418,6 +454,7 @@ int main (int argc, char *argv[])
       localAddress = Inet6SocketAddress (Ipv6Address::GetAny (), 8000);
       //// Generating receiving address for the socket
       localAddress2 = Inet6SocketAddress (Ipv6Address::GetAny (), 8000);
+      localAddress3 = Inet6SocketAddress (Ipv6Address::GetAny (), 8000);
       tft = Create<LteSlTft> (LteSlTft::BIDIRECTIONAL, groupAddress6, groupL2Address);
     }
 
@@ -437,19 +474,26 @@ int main (int argc, char *argv[])
   clientApps.Stop (Seconds(3.1));
 
   
-  std::cout <<  "Local Address:" << localAddress << "\tIP Address:" << localAddress << "\n";
-  std::cout <<  "Local Address:" << localAddress2 << "\tIP Address:" << localAddress2 << "\n";
-  std::cout << "IPv4 address get any:" << Ipv4Address::GetAny () << "\n";
+  // std::cout <<  "Local Address:" << localAddress << "\tIP Address:" << localAddress << "\n";
+  // std::cout <<  "Local Address:" << localAddress2 << "\tIP Address:" << localAddress2 << "\n";
+  // std::cout <<  "Local Address:" << localAddress3 << "\tIP Address:" << localAddress3 << "\n";
+  // std::cout << "IPv4 address get any:" << Ipv4Address::GetAny () << "\n";
   ApplicationContainer serverApps;
   PacketSinkHelper sidelinkSink ("ns3::UdpSocketFactory", localAddress);
   serverApps = sidelinkSink.Install (ueNodes.Get (1));
   serverApps.Start (Seconds (2.0));
 
-  //// Application container(packet sink) for receiving packets
+  //// Application container(packet sink) for receiving packets on malicious node
   ApplicationContainer serverApps2;
   PacketSinkHelper sidelinkSink2 ("ns3::UdpSocketFactory", localAddress2);
   serverApps2 = sidelinkSink2.Install (ueNodes.Get (2));  
   serverApps2.Start (Seconds (2.0));
+
+  //// Application container(packet sink) for receiving packets on visitor node
+  ApplicationContainer serverApps3;
+  PacketSinkHelper sidelinkSink3 ("ns3::UdpSocketFactory", localAddress3);
+  serverApps3 = sidelinkSink3.Install (ueNodes.Get (3));  
+  serverApps3.Start (Seconds (2.0));
 
   //Set Sidelink bearers
   proseHelper->ActivateSidelinkBearer (slBearersActivationTime, ueDevs, tft);
@@ -494,6 +538,15 @@ int main (int argc, char *argv[])
           serverApps2.Get (ac)->TraceConnect ("RxWithAddresses", oss.str (), MakeBoundCallback (&UePacketTrace, stream, localAddrs));
           oss.str ("");
         }
+      //// for vistor node
+      for (uint16_t ac = 0; ac < serverApps3.GetN (); ac++)
+        {
+          Ipv4Address localAddrs =  serverApps3.Get (ac)->GetNode ()->GetObject<Ipv4L3Protocol> ()->GetAddress (1,0).GetLocal ();
+          std::cout << "Rx address: " << localAddrs << std::endl;
+          oss << "rx\t" << ueNodes.Get (3)->GetId () << "\t" << ueNodes.Get(3)->GetDevice (0)->GetObject<LteUeNetDevice> ()->GetImsi ();
+          serverApps3.Get (ac)->TraceConnect ("RxWithAddresses", oss.str (), MakeBoundCallback (&UePacketTrace, stream, localAddrs));
+          oss.str ("");
+        }
     }
   else
     {
@@ -528,6 +581,16 @@ int main (int argc, char *argv[])
           serverApps2.Get (ac)->TraceConnect ("RxWithAddresses", oss.str (), MakeBoundCallback (&UePacketTrace, stream, localAddrs));
           oss.str ("");
         }
+        //// for vistor node
+      for (uint16_t ac = 0; ac < serverApps3.GetN (); ac++)
+        {
+          serverApps3.Get (ac)->GetNode ()->GetObject<Ipv6L3Protocol> ()->AddMulticastAddress (groupAddress6);
+          Ipv6Address localAddrs =  serverApps3.Get (ac)->GetNode ()->GetObject<Ipv6L3Protocol> ()->GetAddress (1,1).GetAddress ();
+          std::cout << "Rx address: " << localAddrs << std::endl;
+          oss << "rx\t" << ueNodes.Get (3)->GetId () << "\t" << ueNodes.Get (3)->GetDevice (0)->GetObject<LteUeNetDevice> ()->GetImsi ();
+          serverApps3.Get (ac)->TraceConnect ("RxWithAddresses", oss.str (), MakeBoundCallback (&UePacketTrace, stream, localAddrs));
+          oss.str ("");
+        }
     }
 
   NS_LOG_INFO ("Enabling Sidelink traces...");
@@ -538,7 +601,7 @@ int main (int argc, char *argv[])
   Simulator::Stop (simTime);
   //// Scheduling the replay function
   Simulator::Schedule (Time(Seconds(4)),&replay,ueNodes.Get(2), serverApps, serverApps2);
-  Simulator::Schedule (Time(Seconds(5)),&checkLowerPacket,ueNodes.Get(2), serverApps, serverApps2);
+  Simulator::Schedule (Time(Seconds(5)),&replayFromIp,serverApps, serverApps2);
   
   Simulator::Run ();
   Simulator::Destroy ();

@@ -650,14 +650,29 @@ LteUePhy::GetSlSpectrumPhy () const
 void
 LteUePhy::DoSendSlMacPdu (Ptr<Packet> p, LteUePhySapProvider::TransmitSlPhySduParameters params)
 {
-  std::cout << "In function LteUePhy::DoSendSlMacPdu";
-  std::cout << "\nChannel:" << params.channel 
-            << "\nparams.rbLen:" << params.rbLen 
-            << "\nparams.rbStart:" << params.rbStart
-            << "\nparams.resNo:" << params.resNo
-            << "\nparams.rv:" << params.rv << "\n";
-  NS_LOG_FUNCTION (this);
+  // static int printOnlyTwice = 0;
+
+  // std::list<LteUePhySapProvider::TransmitSlPhySduParameters>::iterator paramIt = &params;
   std::cout << "In function LteUePhy::DoSendSlMacPdu\n";
+  
+  // if(printOnlyTwice!=10)
+  // {
+  //   p->Print(std::cout);
+  //   std::cout << "\n";
+  //   p->
+
+  //   std::cout << "params.channel: " << params.channel << std::endl;
+  //   std::cout << "params.rbStart: " << static_cast<int>(params.rbStart) << std::endl;
+  //   std::cout << "params.rbLen: " << static_cast<int>(params.rbLen) << std::endl;
+  //   std::cout << "params.resNo: " << params.resNo << std::endl;
+  //   std::cout << "params.rv: " << static_cast<int>(params.rv) << std::endl;
+  //   std::cout << "params.hopping: " << static_cast<int>(params.hopping) << std::endl;
+  //   std::cout << "params.hoppingInfo: " << static_cast<int>(params.hoppingInfo) << std::endl;
+  //   std::cout << "params.dstId: " << static_cast<int>(params.dstId) << std::endl;
+  //   printOnlyTwice++;
+  // }
+
+  NS_LOG_FUNCTION (this);
   SetMacPdu (p);
 
   NS_ASSERT_MSG (m_packetParamsQueue.at (m_packetParamsQueue.size () - 1).size () == 0, "Error: Can only send one sidelink message per TTI");

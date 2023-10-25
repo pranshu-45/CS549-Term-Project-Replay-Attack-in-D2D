@@ -284,6 +284,7 @@ LteNetDevice::Receive (Ptr<Packet> p)
 
   // debug logs
   std::cout << "In function LteNetDevice::Receive()\n";
+  ReceivedIpLayerPacket.push_back(p->Copy());
   // std::cout << "Printing packet state as of now\n\n";
   // p->Print(std::cout);
   // std::cout << "\n\n";

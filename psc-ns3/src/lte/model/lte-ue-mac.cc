@@ -312,9 +312,11 @@ UeMemberLteUePhySapUser::ReceiveSlSciPhyPdu (Ptr<Packet> p)
   m_mac->DoReceiveSlSciPhyPdu (p);
 }
 
+static int calls_SubframeIndication=0;
 void
 UeMemberLteUePhySapUser::SubframeIndication (uint32_t frameNo, uint32_t subframeNo)
 {
+  calls_SubframeIndication++;
   m_mac->DoSubframeIndication (frameNo, subframeNo);
 }
 
@@ -1587,9 +1589,11 @@ LteUeMac::DoSubframeIndication (uint32_t frameNo, uint32_t subframeNo)
     }
 }
 
+static int calls_DoSlDelayedSubframeIndication=0;
 void
 LteUeMac::DoSlDelayedSubframeIndication (uint32_t frameNo, uint32_t subframeNo)
 {
+  calls_DoSlDelayedSubframeIndication++;
   //There is a delay between the MAC scheduling and the transmission so we assume that we are ahead.
   if (subframeNo + UL_PUSCH_TTIS_DELAY > 10)
     {
@@ -1954,6 +1958,8 @@ LteUeMac::DoSlDelayedSubframeIndication (uint32_t frameNo, uint32_t subframeNo)
                                   txOpParams.dstL2Id = (*itBsr).first.dstL2Id;
                                   ////debug logs
                                   std::cout << "In function LteUeMac::DoSlDelayedSubframeIndication 3\n";
+                                  std::cout << "calls_SubframeIndication: " << calls_SubframeIndication << "\n";
+                                  std::cout << "calls_DoSlDelayedSubframeIndication: " << calls_DoSlDelayedSubframeIndication << "\n";
                                   (*it).second.macSapUser->NotifyTxOpportunity (txOpParams);
                                   if ((*itBsr).second.txQueueSize >= bytesForThisLc - rlcOverhead)
                                     {

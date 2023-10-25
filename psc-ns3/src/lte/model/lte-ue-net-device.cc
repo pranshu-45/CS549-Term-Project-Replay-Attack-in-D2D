@@ -286,6 +286,13 @@ LteUeNetDevice::DoInitialize (void)
 bool
 LteUeNetDevice::Send (Ptr<Packet> packet, const Address& dest, uint16_t protocolNumber)
 {
+  std::cout << "In function LteUeNetDevice::Send\n";
+  packet->Print(std::cout);
+  std::cout << "\n";
+
+  std::cout << "Send dest: " << dest << "\n";
+  std::cout << "Protocol Number: " << protocolNumber << "\n";
+
   NS_LOG_FUNCTION (this << packet << dest << protocolNumber);
   NS_ABORT_MSG_IF (protocolNumber != Ipv4L3Protocol::PROT_NUMBER
                    && protocolNumber != Ipv6L3Protocol::PROT_NUMBER,

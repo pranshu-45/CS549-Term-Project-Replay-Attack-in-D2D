@@ -407,6 +407,17 @@ LteRlcUm::DoNotifyTxOpportunity (LteMacSapUser::TxOpportunityParameters txOpPara
   params.mibslMsg = false;
   ////debug log
   std::cout << "In function LteRlcUm::DoNotifyTxOpportunity\n";
+  std::cout << "pdu: ";params.pdu->Print(std::cout);std::cout << std::endl;
+  std::cout << "rnti: " << params.rnti << std::endl;
+  std::cout << "lcid: " << static_cast<int>(params.lcid) << std::endl;
+  std::cout << "layer: " << static_cast<int>(params.layer) << std::endl;
+  std::cout << "harqProcessId: " << static_cast<int>(params.harqProcessId) << std::endl;
+  std::cout << "componentCarrierId: " << static_cast<int>(params.componentCarrierId) << std::endl;
+  std::cout << "srcL2Id: " << params.srcL2Id << std::endl;
+  std::cout << "dstL2Id: " << params.dstL2Id << std::endl;
+  std::cout << "discMsg: " << params.discMsg << std::endl;
+  std::cout << "mibslMsg: " << params.mibslMsg << std::endl;
+
   m_macSapProvider->TransmitPdu (params);
 
   if (!m_txBuffer.empty ())
