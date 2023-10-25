@@ -128,7 +128,7 @@ void
 LteNetDevice::SetReceiveCallback (ReceiveCallback cb)
 {
   //// Debug logs
-  std::cout << "lte-net-device.cc in LteNetDevice::SetReceiveCallback" << std::endl;
+  // std::cout << "lte-net-device.cc in LteNetDevice::SetReceiveCallback" << std::endl;
   // std::cout << "checking cb properties: " << cb.IsEqual << "\n";
   NS_LOG_FUNCTION (this);
   m_rxCallback = cb;
@@ -283,16 +283,21 @@ LteNetDevice::Receive (Ptr<Packet> p)
   NS_LOG_FUNCTION (this << p);
 
   // debug logs
-  std::cout << "In function LteNetDevice::Receive()\n";
+  std::cout << "In function LteNetDevice::Receive() for node Id " << m_node->GetId() << "\n";
   ReceivedIpLayerPacket.push_back(p->Copy());
   // std::cout << "Printing packet state as of now\n\n";
-  // p->Print(std::cout);
-  // std::cout << "\n\n";
+  
+  // std::cout << "Before peek header\n";
+  p->Print(std::cout);
+  std::cout << "\n";
   Ipv4Header ipv4Header;
   Ipv6Header ipv6Header;
 
   if (p->PeekHeader (ipv4Header) != 0)
     {
+      // std::cout << "After peek header\n";
+      // p->Print(std::cout);
+      // std::cout << "\n";
       NS_LOG_LOGIC ("IPv4 stack...");
       m_rxCallback (this, p, Ipv4L3Protocol::PROT_NUMBER, Address ());
     }

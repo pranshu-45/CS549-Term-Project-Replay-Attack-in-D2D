@@ -653,7 +653,7 @@ LteUePhy::DoSendSlMacPdu (Ptr<Packet> p, LteUePhySapProvider::TransmitSlPhySduPa
   // static int printOnlyTwice = 0;
 
   // std::list<LteUePhySapProvider::TransmitSlPhySduParameters>::iterator paramIt = &params;
-  std::cout << "In function LteUePhy::DoSendSlMacPdu\n";
+  // std::cout << "In function LteUePhy::DoSendSlMacPdu\n";
   
   // if(printOnlyTwice!=10)
   // {

@@ -249,7 +249,7 @@ UeMemberLteMacSapProvider::UeMemberLteMacSapProvider (LteUeMac* mac)
 void
 UeMemberLteMacSapProvider::TransmitPdu (TransmitPduParameters params)
 {
-  std::cout << "In function UeMemberLteMacSapProvider::TransmitPdu\n";
+  // std::cout << "In function UeMemberLteMacSapProvider::TransmitPdu\n";
   m_mac->DoTransmitPdu (params);
 }
 
@@ -1142,8 +1142,8 @@ LteUeMac::DoReceivePhyPdu (Ptr<Packet> p)
   Ptr<Packet> dup = p->Copy();
   MacReceivedPacket.push_back(dup);
   // std::cout << "\n";
-  // p->Print(std::cout);
-  // std::cout << "\n";
+  p->Print(std::cout);
+  std::cout << "\n";
   NS_LOG_FUNCTION (this);
   LteRadioBearerTag tag;
   p->RemovePacketTag (tag);
@@ -1900,7 +1900,7 @@ LteUeMac::DoSlDelayedSubframeIndication (uint32_t frameNo, uint32_t subframeNo)
                               txOpParams.srcL2Id = (*itBsr).first.srcL2Id;
                               txOpParams.dstL2Id = (*itBsr).first.dstL2Id;
                               ////debug logs
-                              std::cout << "In function LteUeMac::DoSlDelayedSubframeIndication 1\n";
+                              // std::cout << "In function LteUeMac::DoSlDelayedSubframeIndication 1\n";
                               (*it).second.macSapUser->NotifyTxOpportunity (txOpParams);
                               bytesForThisLc -= (*itBsr).second.statusPduSize;     //decrement size available for data
                               NS_LOG_DEBUG ("Serve STATUS PDU" << (*itBsr).second.statusPduSize);
@@ -1931,7 +1931,7 @@ LteUeMac::DoSlDelayedSubframeIndication (uint32_t frameNo, uint32_t subframeNo)
                                   txOpParams.srcL2Id = (*itBsr).first.srcL2Id;
                                   txOpParams.dstL2Id = (*itBsr).first.dstL2Id;
                                   ////debug logs
-                                  std::cout << "In function LteUeMac::DoSlDelayedSubframeIndication 2\n";
+                                  // std::cout << "In function LteUeMac::DoSlDelayedSubframeIndication 2\n";
                                   (*it).second.macSapUser->NotifyTxOpportunity (txOpParams);
                                   if ((*itBsr).second.retxQueueSize >= bytesForThisLc)
                                     {
@@ -1957,9 +1957,9 @@ LteUeMac::DoSlDelayedSubframeIndication (uint32_t frameNo, uint32_t subframeNo)
                                   txOpParams.srcL2Id = (*itBsr).first.srcL2Id;
                                   txOpParams.dstL2Id = (*itBsr).first.dstL2Id;
                                   ////debug logs
-                                  std::cout << "In function LteUeMac::DoSlDelayedSubframeIndication 3\n";
-                                  std::cout << "calls_SubframeIndication: " << calls_SubframeIndication << "\n";
-                                  std::cout << "calls_DoSlDelayedSubframeIndication: " << calls_DoSlDelayedSubframeIndication << "\n";
+                                  // std::cout << "In function LteUeMac::DoSlDelayedSubframeIndication 3\n";
+                                  // std::cout << "calls_SubframeIndication: " << calls_SubframeIndication << "\n";
+                                  // std::cout << "calls_DoSlDelayedSubframeIndication: " << calls_DoSlDelayedSubframeIndication << "\n";
                                   (*it).second.macSapUser->NotifyTxOpportunity (txOpParams);
                                   if ((*itBsr).second.txQueueSize >= bytesForThisLc - rlcOverhead)
                                     {

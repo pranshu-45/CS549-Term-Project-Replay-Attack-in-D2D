@@ -132,7 +132,7 @@ UePacketTrace (Ptr<OutputStreamWrapper> stream, const Address &localAddrs, std::
 //// currently implemented sending packet from the malicious node
 void replay(Ptr<Node> ueNode,ApplicationContainer &serverApps, ApplicationContainer &serverApps2){
   //// debug statement
-  std::cout << "replay function called\n";
+  std::cout << "\n\n\n\nreplay function called\n";
 
   //// creating a new socket
   ns3::Ptr<ns3::Socket> m_socket = Socket::CreateSocket (ueNode, UdpSocketFactory::GetTypeId());
@@ -163,7 +163,7 @@ void replay(Ptr<Node> ueNode,ApplicationContainer &serverApps, ApplicationContai
 
 void replayFromIp(ApplicationContainer &serverApps, ApplicationContainer &maliciousApp){
   //// debug statement
-  std::cout << "replayFromIp function called\n";
+  std::cout << "\n\n\n\nreplayFromIp function called\n";
 
   Ptr<Node> node = maliciousApp.Get (0)->GetNode (); // Your node of interest
   Ptr<NetDevice> netDevice = node->GetDevice(0);
@@ -177,9 +177,26 @@ void replayFromIp(ApplicationContainer &serverApps, ApplicationContainer &malici
   Ipv4Address groupAddress4 ("225.0.0.0");
   remoteAddress = InetSocketAddress (groupAddress4, 8000);
 
+  Ptr<Packet> receivedIpPacket = netDevice->ReceivedIpLayerPacket[0];
+
+  // Ipv4Header modifiedHeader;
+  // receivedIpPacket->PeekHeader (modifiedHeader);
+  // std::cout << "header source received is " << modifiedHeader.GetSource() << "\n";
+  // std::cout << "header dest received is " << modifiedHeader.GetDestination() << "\n";
+  // modifiedHeader.SetDestination(groupAddress4);
+  // std::cout << "header dest changed is " << modifiedHeader.GetDestination() << "\n";
+  
+  
+  // Ipv4Header oldHeader;
+  // receivedIpPacket->RemoveHeader(oldHeader);
+  // receivedIpPacket->AddHeader(modifiedHeader);
+  
+  receivedIpPacket->Print(std::cout);
+  std::cout << "\n";
+
   Ptr<Node> destNode = serverApps.Get (0)->GetNode ();
   // std::cout << "Remote Address: " << remoteAddress << "\n";
-  netDevice->Send(netDevice->ReceivedIpLayerPacket[0],remoteAddress,2048);
+  netDevice->Send(receivedIpPacket,remoteAddress,2048);
   
 }
 

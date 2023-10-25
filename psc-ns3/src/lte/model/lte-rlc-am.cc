@@ -285,8 +285,6 @@ LteRlcAm::DoNotifyTxOpportunity (LteMacSapUser::TxOpportunityParameters txOpPara
       params.componentCarrierId = txOpParams.componentCarrierId;
       params.discMsg = false;
       params.mibslMsg = false;
-      ////debug log
-      std::cout << "In function LteRlcAm::DoNotifyTxOpportunity 1\n";
       m_macSapProvider->TransmitPdu (params);
 
       m_statusPduRequested = false;
@@ -378,8 +376,6 @@ LteRlcAm::DoNotifyTxOpportunity (LteMacSapUser::TxOpportunityParameters txOpPara
                   params.componentCarrierId = txOpParams.componentCarrierId;
                   params.discMsg = false;
                   params.mibslMsg = false;
-                  ////debug log
-                  std::cout << "In function LteRlcAm::DoNotifyTxOpportunity 2\n";
                   m_macSapProvider->TransmitPdu (params);
 
                   m_retxBuffer.at (seqNumberValue).m_retxCount++;
@@ -769,8 +765,6 @@ LteRlcAm::DoNotifyTxOpportunity (LteMacSapUser::TxOpportunityParameters txOpPara
   params.discMsg = false;
   params.mibslMsg = false;
 
-  ////debug log
-  std::cout << "In function LteRlcAm::DoNotifyTxOpportunity 3\n";
   m_macSapProvider->TransmitPdu (params);
 }
 

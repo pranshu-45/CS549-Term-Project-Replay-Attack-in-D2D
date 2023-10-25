@@ -118,6 +118,9 @@ LteRlcSpecificLteRlcSapProvider<C>::LteRlcSpecificLteRlcSapProvider ()
 template <class C>
 void LteRlcSpecificLteRlcSapProvider<C>::TransmitPdcpPdu (TransmitPdcpPduParameters params)
 {
+  std::cout << "In function LteRlcSpecificLteRlcSapProvider<C>::TransmitPdcpPdu\n";
+  params.pdcpPdu->Print(std::cout);
+  std::cout << "\n";
   m_rlc->DoTransmitPdcpPdu (params.pdcpPdu);
 }
 

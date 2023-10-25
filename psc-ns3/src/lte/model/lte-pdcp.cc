@@ -196,10 +196,11 @@ LtePdcp::DoTransmitPdcpSdu (LtePdcpSapProvider::TransmitPdcpSduParameters params
 {
   NS_LOG_FUNCTION (this << m_rnti << static_cast <uint16_t> (m_lcid) << params.pdcpSdu->GetSize ());
   Ptr<Packet> p = params.pdcpSdu;
-  
+  std::cout << "In function LtePdcp::DoTransmitPdcpSdu\n";
+  p->Print(std::cout);
+  std::cout << "\n";
   // Sender timestamp
   PdcpTag pdcpTag (Simulator::Now ());
-  
   if (IsSlrb()) /* SLRB has different PDCP headers than DRB */
     {
       LteSlPdcpHeader pdcpHeader;

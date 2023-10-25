@@ -702,6 +702,11 @@ LteUeRrc::DoSendData (Ptr<Packet> packet, uint8_t bid)
 void
 LteUeRrc::DoSendDataToGroup (Ptr<Packet> packet, uint32_t group)
 {
+
+  ////Debug log
+  std::cout << "In function LteUeRrc::DoSendDataToGroup\n";
+  packet->Print(std::cout);
+  std::cout << "\n";
   NS_LOG_FUNCTION (this << packet << "for Sidelink group " << group);
   //Find the PDCP for Sidelink transmission
   Ptr<LteSidelinkRadioBearerInfo> slrb = m_sidelinkConfiguration->GetSidelinkRadioBearer (group);

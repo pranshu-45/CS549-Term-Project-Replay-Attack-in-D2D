@@ -260,6 +260,10 @@ EpcUeNas::Send (Ptr<Packet> packet, uint16_t protocolNumber)
                 if ((*it)->Matches (ipv4Header.GetSource (), ipv4Header.GetDestination ()))
                   {
                     //Found sidelink
+                    ////Debug log
+                    std::cout << "In function EpcUeNas::Send\n";
+                    packet->Print(std::cout);
+                    std::cout << "\n";
                     m_asSapProvider->SendDataToGroup (packet, (*it)->GetRemoteL2Address ());
                     return true;
                   }

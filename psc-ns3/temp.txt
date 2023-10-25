@@ -1,13 +1,11 @@
-Consolidate compiler generated dependencies of target scratch_lte-sl-out-of-covrg-comm
+Consolidate compiler generated dependencies of target liblte-obj
+[  0%] Building CXX object src/lte/CMakeFiles/liblte-obj.dir/model/lte-rlc-um.cc.o
+[  0%] Linking CXX shared library ../../../build/lib/libns3-dev-lte-default.so
 UE 1 node id = [3]
 UE 2 node id = [4]
 UE 3 node id = [5]
 UE 4 node id = [6]
 Created the malicious and visitor node
-lte-net-device.cc in LteNetDevice::SetReceiveCallback
-lte-net-device.cc in LteNetDevice::SetReceiveCallback
-lte-net-device.cc in LteNetDevice::SetReceiveCallback
-lte-net-device.cc in LteNetDevice::SetReceiveCallback
 Installed LteHelper in UeNodes
 Tx address: 7.0.0.2
 Rx address: 7.0.0.3
@@ -18,60 +16,39 @@ Connect Function: m_connected=1 logs 04-07-e1:00:00:00:40:1f:00
 In ScheduleNextTx, m_maxBytes=0, m_totBytes:0
 before Simulator::Schedule
 In UDP::DoSendTo() 4 args
-In GetRoutingProtocol!=0
 Source of packet:7.0.0.2
 In function LteUeNetDevice::Send
 ns3::Ipv4Header (tos 0x0 DSCP Default ECN Not-ECT ttl 64 id 0 protocol 17 offset (bytes) 0 flags [none] length: 228 7.0.0.2 > 225.0.0.0) ns3::UdpHeader (length: 208 49153 > 8000) Payload (size=200)
 Send dest: 02-06-ff:ff:ff:ff:ff:ff
 Protocol Number: 2048
+In function LteUeRrc::DoSendDataToGroup
+ns3::Ipv4Header (tos 0x0 DSCP Default ECN Not-ECT ttl 64 id 0 protocol 17 offset (bytes) 0 flags [none] length: 228 7.0.0.2 > 225.0.0.0) ns3::UdpHeader (length: 208 49153 > 8000) Payload (size=200)
+In function LtePdcp::DoTransmitPdcpSdu
+ns3::Ipv4Header (tos 0x0 DSCP Default ECN Not-ECT ttl 64 id 0 protocol 17 offset (bytes) 0 flags [none] length: 228 7.0.0.2 > 225.0.0.0) ns3::UdpHeader (length: 208 49153 > 8000) Payload (size=200)
+In function LteRlcSpecificLteRlcSapProvider<C>::TransmitPdcpPdu
+ns3::LteSlPdcpHeader (SDU type=0 PGK Index=0 PTK/KD_SESS=0 SN=0) ns3::Ipv4Header (tos 0x0 DSCP Default ECN Not-ECT ttl 64 id 0 protocol 17 offset (bytes) 0 flags [none] length: 228 7.0.0.2 > 225.0.0.0) ns3::UdpHeader (length: 208 49153 > 8000) Payload (size=200)
+In function LteRlcUm::DoTransmitPdcpPdu
+ns3::LteSlPdcpHeader (SDU type=0 PGK Index=0 PTK/KD_SESS=0 SN=0) ns3::Ipv4Header (tos 0x0 DSCP Default ECN Not-ECT ttl 64 id 0 protocol 17 offset (bytes) 0 flags [none] length: 228 7.0.0.2 > 225.0.0.0) ns3::UdpHeader (length: 208 49153 > 8000) Payload (size=200)
 In ScheduleNextTx, m_maxBytes=0, m_totBytes:200
 before Simulator::Schedule
-In function LteUePhy::DoSendSlMacPdu
-In function LteUePhy::DoSendSlMacPdu
-In function LteUeMac::DoSlDelayedSubframeIndication 3
-calls_SubframeIndication: 12180
-calls_DoSlDelayedSubframeIndication: 12177
-In function LteRlcSpecificLteMacSapUser::NotifyTxOpportunity
 In function LteRlcUm::DoNotifyTxOpportunity
-pdu: ns3::LteRlcHeader (Len=2 FI=1 E=0 SN=0) ns3::LteSlPdcpHeader (SDU type=0 PGK Index=0 PTK/KD_SESS=0 SN=0) ns3::Ipv4Header (tos 0x0 DSCP Default ECN Not-ECT ttl 64 id 0 protocol 17 offset (bytes) 0 flags [none] length: 228 7.0.0.2 > 225.0.0.0) ns3::UdpHeader (length: 208 49153 > 8000) Payload Fragment [0:158]
-rnti: 1
-lcid: 1
-layer: 0
-harqProcessId: 0
-componentCarrierId: 0
-srcL2Id: 1
-dstL2Id: 255
-discMsg: 0
-mibslMsg: 0
-In function UeMemberLteMacSapProvider::TransmitPdu
-In function LteUePhy::DoSendSlMacPdu
+Printing m_txBuffer:
+Payload Fragment [158:200]
+waiting since: +3e+09ns
+Completed printing m_txBuffer:
 In function LteUeMac::DoReceivePhyPdu
+ns3::LteRlcHeader (Len=2 FI=1 E=0 SN=0) ns3::LteSlPdcpHeader (SDU type=0 PGK Index=0 PTK/KD_SESS=0 SN=0) ns3::Ipv4Header (tos 0x0 DSCP Default ECN Not-ECT ttl 64 id 0 protocol 17 offset (bytes) 0 flags [none] length: 228 7.0.0.2 > 225.0.0.0) ns3::UdpHeader (length: 208 49153 > 8000) Payload Fragment [0:158]
 In function LteUeMac::DoReceivePhyPdu
+ns3::LteRlcHeader (Len=2 FI=1 E=0 SN=0) ns3::LteSlPdcpHeader (SDU type=0 PGK Index=0 PTK/KD_SESS=0 SN=0) ns3::Ipv4Header (tos 0x0 DSCP Default ECN Not-ECT ttl 64 id 0 protocol 17 offset (bytes) 0 flags [none] length: 228 7.0.0.2 > 225.0.0.0) ns3::UdpHeader (length: 208 49153 > 8000) Payload Fragment [0:158]
 In function LteUeMac::DoReceivePhyPdu
-In function LteUePhy::DoSendSlMacPdu
-In function LteUePhy::DoSendSlMacPdu
-In function LteUePhy::DoSendSlMacPdu
-In function LteUePhy::DoSendSlMacPdu
-In function LteUePhy::DoSendSlMacPdu
-In function LteUeMac::DoSlDelayedSubframeIndication 3
-calls_SubframeIndication: 12340
-calls_DoSlDelayedSubframeIndication: 12337
-In function LteRlcSpecificLteMacSapUser::NotifyTxOpportunity
+ns3::LteRlcHeader (Len=2 FI=1 E=0 SN=0) ns3::LteSlPdcpHeader (SDU type=0 PGK Index=0 PTK/KD_SESS=0 SN=0) ns3::Ipv4Header (tos 0x0 DSCP Default ECN Not-ECT ttl 64 id 0 protocol 17 offset (bytes) 0 flags [none] length: 228 7.0.0.2 > 225.0.0.0) ns3::UdpHeader (length: 208 49153 > 8000) Payload Fragment [0:158]
 In function LteRlcUm::DoNotifyTxOpportunity
-pdu: ns3::LteRlcHeader (Len=2 FI=2 E=0 SN=1) Payload Fragment [158:200]
-rnti: 1
-lcid: 1
-layer: 0
-harqProcessId: 0
-componentCarrierId: 0
-srcL2Id: 1
-dstL2Id: 255
-discMsg: 0
-mibslMsg: 0
-In function UeMemberLteMacSapProvider::TransmitPdu
-In function LteUePhy::DoSendSlMacPdu
+Printing m_txBuffer:
+Completed printing m_txBuffer:
 In function LteUeMac::DoReceivePhyPdu
-In function LteNetDevice::Receive()
+ns3::LteRlcHeader (Len=2 FI=2 E=0 SN=1) Payload Fragment [158:200]
+In function LteNetDevice::Receive() for node Id 4
+ns3::Ipv4Header (tos 0x0 DSCP Default ECN Not-ECT ttl 64 id 0 protocol 17 offset (bytes) 0 flags [none] length: 228 7.0.0.2 > 225.0.0.0) ns3::UdpHeader (length: 208 49153 > 8000) Payload (size=200)
 Called the callback function Node::NonPromiscReceiveFromDevice
 4 Protocol 2048 Promiscuous 0
 Called the callback function Ipv4L3Protocol::Receive from m_handlers(Node Protocol Handler)
@@ -89,7 +66,9 @@ In here
 1
 0
 In function LteUeMac::DoReceivePhyPdu
-In function LteNetDevice::Receive()
+ns3::LteRlcHeader (Len=2 FI=2 E=0 SN=1) Payload Fragment [158:200]
+In function LteNetDevice::Receive() for node Id 5
+ns3::Ipv4Header (tos 0x0 DSCP Default ECN Not-ECT ttl 64 id 0 protocol 17 offset (bytes) 0 flags [none] length: 228 7.0.0.2 > 225.0.0.0) ns3::UdpHeader (length: 208 49153 > 8000) Payload (size=200)
 Called the callback function Node::NonPromiscReceiveFromDevice
 5 Protocol 2048 Promiscuous 0
 Called the callback function Ipv4L3Protocol::Receive from m_handlers(Node Protocol Handler)
@@ -107,7 +86,9 @@ In here
 1
 0
 In function LteUeMac::DoReceivePhyPdu
-In function LteNetDevice::Receive()
+ns3::LteRlcHeader (Len=2 FI=2 E=0 SN=1) Payload Fragment [158:200]
+In function LteNetDevice::Receive() for node Id 6
+ns3::Ipv4Header (tos 0x0 DSCP Default ECN Not-ECT ttl 64 id 0 protocol 17 offset (bytes) 0 flags [none] length: 228 7.0.0.2 > 225.0.0.0) ns3::UdpHeader (length: 208 49153 > 8000) Payload (size=200)
 Called the callback function Node::NonPromiscReceiveFromDevice
 6 Protocol 2048 Promiscuous 0
 Called the callback function Ipv4L3Protocol::Receive from m_handlers(Node Protocol Handler)
@@ -124,9 +105,10 @@ At time +3.08893s packet sink received 200 bytes from 7.0.0.2 port 49153 total R
 In here
 1
 0
-In function LteUePhy::DoSendSlMacPdu
-In function LteUePhy::DoSendSlMacPdu
-In function LteUePhy::DoSendSlMacPdu
+
+
+
+
 replay function called
 Binding status: 0
 Connect Function: m_connected=1 logs 04-07-e1:00:00:00:40:1f:00
@@ -134,60 +116,39 @@ size 1
 Printing packet that is sent
 Payload (size=200)
 Send status:In UDP::DoSendTo() 4 args
-In GetRoutingProtocol!=0
 Source of packet:7.0.0.4
 In function LteUeNetDevice::Send
 ns3::Ipv4Header (tos 0x0 DSCP Default ECN Not-ECT ttl 64 id 0 protocol 17 offset (bytes) 0 flags [none] length: 228 7.0.0.4 > 225.0.0.0) ns3::UdpHeader (length: 208 49153 > 8000) Payload (size=200)
 Send dest: 02-06-ff:ff:ff:ff:ff:ff
 Protocol Number: 2048
+In function LteUeRrc::DoSendDataToGroup
+ns3::Ipv4Header (tos 0x0 DSCP Default ECN Not-ECT ttl 64 id 0 protocol 17 offset (bytes) 0 flags [none] length: 228 7.0.0.4 > 225.0.0.0) ns3::UdpHeader (length: 208 49153 > 8000) Payload (size=200)
+In function LtePdcp::DoTransmitPdcpSdu
+ns3::Ipv4Header (tos 0x0 DSCP Default ECN Not-ECT ttl 64 id 0 protocol 17 offset (bytes) 0 flags [none] length: 228 7.0.0.4 > 225.0.0.0) ns3::UdpHeader (length: 208 49153 > 8000) Payload (size=200)
+In function LteRlcSpecificLteRlcSapProvider<C>::TransmitPdcpPdu
+ns3::LteSlPdcpHeader (SDU type=0 PGK Index=0 PTK/KD_SESS=0 SN=0) ns3::Ipv4Header (tos 0x0 DSCP Default ECN Not-ECT ttl 64 id 0 protocol 17 offset (bytes) 0 flags [none] length: 228 7.0.0.4 > 225.0.0.0) ns3::UdpHeader (length: 208 49153 > 8000) Payload (size=200)
+In function LteRlcUm::DoTransmitPdcpPdu
+ns3::LteSlPdcpHeader (SDU type=0 PGK Index=0 PTK/KD_SESS=0 SN=0) ns3::Ipv4Header (tos 0x0 DSCP Default ECN Not-ECT ttl 64 id 0 protocol 17 offset (bytes) 0 flags [none] length: 228 7.0.0.4 > 225.0.0.0) ns3::UdpHeader (length: 208 49153 > 8000) Payload (size=200)
 200
 0
-In function LteUePhy::DoSendSlMacPdu
-In function LteUePhy::DoSendSlMacPdu
-In function LteUeMac::DoSlDelayedSubframeIndication 3
-calls_SubframeIndication: 16180
-calls_DoSlDelayedSubframeIndication: 16179
-In function LteRlcSpecificLteMacSapUser::NotifyTxOpportunity
 In function LteRlcUm::DoNotifyTxOpportunity
-pdu: ns3::LteRlcHeader (Len=2 FI=1 E=0 SN=0) ns3::LteSlPdcpHeader (SDU type=0 PGK Index=0 PTK/KD_SESS=0 SN=0) ns3::Ipv4Header (tos 0x0 DSCP Default ECN Not-ECT ttl 64 id 0 protocol 17 offset (bytes) 0 flags [none] length: 228 7.0.0.4 > 225.0.0.0) ns3::UdpHeader (length: 208 49153 > 8000) Payload Fragment [0:158]
-rnti: 3
-lcid: 1
-layer: 0
-harqProcessId: 0
-componentCarrierId: 0
-srcL2Id: 3
-dstL2Id: 255
-discMsg: 0
-mibslMsg: 0
-In function UeMemberLteMacSapProvider::TransmitPdu
-In function LteUePhy::DoSendSlMacPdu
+Printing m_txBuffer:
+Payload Fragment [158:200]
+waiting since: +4e+09ns
+Completed printing m_txBuffer:
 In function LteUeMac::DoReceivePhyPdu
+ns3::LteRlcHeader (Len=2 FI=1 E=0 SN=0) ns3::LteSlPdcpHeader (SDU type=0 PGK Index=0 PTK/KD_SESS=0 SN=0) ns3::Ipv4Header (tos 0x0 DSCP Default ECN Not-ECT ttl 64 id 0 protocol 17 offset (bytes) 0 flags [none] length: 228 7.0.0.4 > 225.0.0.0) ns3::UdpHeader (length: 208 49153 > 8000) Payload Fragment [0:158]
 In function LteUeMac::DoReceivePhyPdu
+ns3::LteRlcHeader (Len=2 FI=1 E=0 SN=0) ns3::LteSlPdcpHeader (SDU type=0 PGK Index=0 PTK/KD_SESS=0 SN=0) ns3::Ipv4Header (tos 0x0 DSCP Default ECN Not-ECT ttl 64 id 0 protocol 17 offset (bytes) 0 flags [none] length: 228 7.0.0.4 > 225.0.0.0) ns3::UdpHeader (length: 208 49153 > 8000) Payload Fragment [0:158]
 In function LteUeMac::DoReceivePhyPdu
-In function LteUePhy::DoSendSlMacPdu
-In function LteUePhy::DoSendSlMacPdu
-In function LteUePhy::DoSendSlMacPdu
-In function LteUePhy::DoSendSlMacPdu
-In function LteUePhy::DoSendSlMacPdu
-In function LteUeMac::DoSlDelayedSubframeIndication 3
-calls_SubframeIndication: 16340
-calls_DoSlDelayedSubframeIndication: 16339
-In function LteRlcSpecificLteMacSapUser::NotifyTxOpportunity
+ns3::LteRlcHeader (Len=2 FI=1 E=0 SN=0) ns3::LteSlPdcpHeader (SDU type=0 PGK Index=0 PTK/KD_SESS=0 SN=0) ns3::Ipv4Header (tos 0x0 DSCP Default ECN Not-ECT ttl 64 id 0 protocol 17 offset (bytes) 0 flags [none] length: 228 7.0.0.4 > 225.0.0.0) ns3::UdpHeader (length: 208 49153 > 8000) Payload Fragment [0:158]
 In function LteRlcUm::DoNotifyTxOpportunity
-pdu: ns3::LteRlcHeader (Len=2 FI=2 E=0 SN=1) Payload Fragment [158:200]
-rnti: 3
-lcid: 1
-layer: 0
-harqProcessId: 0
-componentCarrierId: 0
-srcL2Id: 3
-dstL2Id: 255
-discMsg: 0
-mibslMsg: 0
-In function UeMemberLteMacSapProvider::TransmitPdu
-In function LteUePhy::DoSendSlMacPdu
+Printing m_txBuffer:
+Completed printing m_txBuffer:
 In function LteUeMac::DoReceivePhyPdu
-In function LteNetDevice::Receive()
+ns3::LteRlcHeader (Len=2 FI=2 E=0 SN=1) Payload Fragment [158:200]
+In function LteNetDevice::Receive() for node Id 3
+ns3::Ipv4Header (tos 0x0 DSCP Default ECN Not-ECT ttl 64 id 0 protocol 17 offset (bytes) 0 flags [none] length: 228 7.0.0.4 > 225.0.0.0) ns3::UdpHeader (length: 208 49153 > 8000) Payload (size=200)
 Called the callback function Node::NonPromiscReceiveFromDevice
 3 Protocol 2048 Promiscuous 0
 Called the callback function Ipv4L3Protocol::Receive from m_handlers(Node Protocol Handler)
@@ -196,7 +157,9 @@ In function Ipv4L3Protocol::Receive
 ipv4-list-routing.cc rounting input
 Node Id:3 retVal:1
 In function LteUeMac::DoReceivePhyPdu
-In function LteNetDevice::Receive()
+ns3::LteRlcHeader (Len=2 FI=2 E=0 SN=1) Payload Fragment [158:200]
+In function LteNetDevice::Receive() for node Id 4
+ns3::Ipv4Header (tos 0x0 DSCP Default ECN Not-ECT ttl 64 id 0 protocol 17 offset (bytes) 0 flags [none] length: 228 7.0.0.4 > 225.0.0.0) ns3::UdpHeader (length: 208 49153 > 8000) Payload (size=200)
 Called the callback function Node::NonPromiscReceiveFromDevice
 4 Protocol 2048 Promiscuous 0
 Called the callback function Ipv4L3Protocol::Receive from m_handlers(Node Protocol Handler)
@@ -214,7 +177,9 @@ In here
 1
 0
 In function LteUeMac::DoReceivePhyPdu
-In function LteNetDevice::Receive()
+ns3::LteRlcHeader (Len=2 FI=2 E=0 SN=1) Payload Fragment [158:200]
+In function LteNetDevice::Receive() for node Id 6
+ns3::Ipv4Header (tos 0x0 DSCP Default ECN Not-ECT ttl 64 id 0 protocol 17 offset (bytes) 0 flags [none] length: 228 7.0.0.4 > 225.0.0.0) ns3::UdpHeader (length: 208 49153 > 8000) Payload (size=200)
 Called the callback function Node::NonPromiscReceiveFromDevice
 6 Protocol 2048 Promiscuous 0
 Called the callback function Ipv4L3Protocol::Receive from m_handlers(Node Protocol Handler)
@@ -231,61 +196,43 @@ At time +4.08893s packet sink received 200 bytes from 7.0.0.4 port 49153 total R
 In here
 1
 0
-In function LteUePhy::DoSendSlMacPdu
-In function LteUePhy::DoSendSlMacPdu
-In function LteUePhy::DoSendSlMacPdu
+
+
+
+
 replayFromIp function called
+ns3::Ipv4Header (tos 0x0 DSCP Default ECN Not-ECT ttl 64 id 0 protocol 17 offset (bytes) 0 flags [none] length: 228 7.0.0.2 > 225.0.0.0) ns3::UdpHeader (length: 208 49153 > 8000) Payload (size=200)
 ns3::Ipv4Header (tos 0x0 DSCP Default ECN Not-ECT ttl 64 id 0 protocol 17 offset (bytes) 0 flags [none] length: 228 7.0.0.2 > 225.0.0.0) ns3::UdpHeader (length: 208 49153 > 8000) Payload (size=200)
 In function LteUeNetDevice::Send
 ns3::Ipv4Header (tos 0x0 DSCP Default ECN Not-ECT ttl 64 id 0 protocol 17 offset (bytes) 0 flags [none] length: 228 7.0.0.2 > 225.0.0.0) ns3::UdpHeader (length: 208 49153 > 8000) Payload (size=200)
 Send dest: 04-07-e1:00:00:00:40:1f:00
 Protocol Number: 2048
-In function LteUePhy::DoSendSlMacPdu
-In function LteUePhy::DoSendSlMacPdu
-In function LteUeMac::DoSlDelayedSubframeIndication 3
-calls_SubframeIndication: 20180
-calls_DoSlDelayedSubframeIndication: 20179
-In function LteRlcSpecificLteMacSapUser::NotifyTxOpportunity
+In function LteUeRrc::DoSendDataToGroup
+ns3::Ipv4Header (tos 0x0 DSCP Default ECN Not-ECT ttl 64 id 0 protocol 17 offset (bytes) 0 flags [none] length: 228 7.0.0.2 > 225.0.0.0) ns3::UdpHeader (length: 208 49153 > 8000) Payload (size=200)
+In function LtePdcp::DoTransmitPdcpSdu
+ns3::Ipv4Header (tos 0x0 DSCP Default ECN Not-ECT ttl 64 id 0 protocol 17 offset (bytes) 0 flags [none] length: 228 7.0.0.2 > 225.0.0.0) ns3::UdpHeader (length: 208 49153 > 8000) Payload (size=200)
+In function LteRlcSpecificLteRlcSapProvider<C>::TransmitPdcpPdu
+ns3::LteSlPdcpHeader (SDU type=0 PGK Index=0 PTK/KD_SESS=0 SN=1) ns3::Ipv4Header (tos 0x0 DSCP Default ECN Not-ECT ttl 64 id 0 protocol 17 offset (bytes) 0 flags [none] length: 228 7.0.0.2 > 225.0.0.0) ns3::UdpHeader (length: 208 49153 > 8000) Payload (size=200)
+In function LteRlcUm::DoTransmitPdcpPdu
+ns3::LteSlPdcpHeader (SDU type=0 PGK Index=0 PTK/KD_SESS=0 SN=1) ns3::Ipv4Header (tos 0x0 DSCP Default ECN Not-ECT ttl 64 id 0 protocol 17 offset (bytes) 0 flags [none] length: 228 7.0.0.2 > 225.0.0.0) ns3::UdpHeader (length: 208 49153 > 8000) Payload (size=200)
 In function LteRlcUm::DoNotifyTxOpportunity
-pdu: ns3::LteRlcHeader (Len=2 FI=1 E=0 SN=2) ns3::LteSlPdcpHeader (SDU type=0 PGK Index=0 PTK/KD_SESS=0 SN=1) Payload Fragment [0:158]
-rnti: 3
-lcid: 1
-layer: 0
-harqProcessId: 0
-componentCarrierId: 0
-srcL2Id: 3
-dstL2Id: 255
-discMsg: 0
-mibslMsg: 0
-In function UeMemberLteMacSapProvider::TransmitPdu
-In function LteUePhy::DoSendSlMacPdu
+Printing m_txBuffer:
+Payload Fragment [158:200]
+waiting since: +5e+09ns
+Completed printing m_txBuffer:
 In function LteUeMac::DoReceivePhyPdu
+ns3::LteRlcHeader (Len=2 FI=1 E=0 SN=2) ns3::LteSlPdcpHeader (SDU type=0 PGK Index=0 PTK/KD_SESS=0 SN=1) Payload Fragment [0:158]
 In function LteUeMac::DoReceivePhyPdu
+ns3::LteRlcHeader (Len=2 FI=1 E=0 SN=2) ns3::LteSlPdcpHeader (SDU type=0 PGK Index=0 PTK/KD_SESS=0 SN=1) Payload Fragment [0:158]
 In function LteUeMac::DoReceivePhyPdu
-In function LteUePhy::DoSendSlMacPdu
-In function LteUePhy::DoSendSlMacPdu
-In function LteUePhy::DoSendSlMacPdu
-In function LteUePhy::DoSendSlMacPdu
-In function LteUePhy::DoSendSlMacPdu
-In function LteUeMac::DoSlDelayedSubframeIndication 3
-calls_SubframeIndication: 20340
-calls_DoSlDelayedSubframeIndication: 20339
-In function LteRlcSpecificLteMacSapUser::NotifyTxOpportunity
+ns3::LteRlcHeader (Len=2 FI=1 E=0 SN=2) ns3::LteSlPdcpHeader (SDU type=0 PGK Index=0 PTK/KD_SESS=0 SN=1) Payload Fragment [0:158]
 In function LteRlcUm::DoNotifyTxOpportunity
-pdu: ns3::LteRlcHeader (Len=2 FI=2 E=0 SN=3) Payload Fragment [158:200]
-rnti: 3
-lcid: 1
-layer: 0
-harqProcessId: 0
-componentCarrierId: 0
-srcL2Id: 3
-dstL2Id: 255
-discMsg: 0
-mibslMsg: 0
-In function UeMemberLteMacSapProvider::TransmitPdu
-In function LteUePhy::DoSendSlMacPdu
+Printing m_txBuffer:
+Completed printing m_txBuffer:
 In function LteUeMac::DoReceivePhyPdu
-In function LteNetDevice::Receive()
+ns3::LteRlcHeader (Len=2 FI=2 E=0 SN=3) Payload Fragment [158:200]
+In function LteNetDevice::Receive() for node Id 3
+Payload (size=200)
 Called the callback function Node::NonPromiscReceiveFromDevice
 3 Protocol 2048 Promiscuous 0
 Called the callback function Ipv4L3Protocol::Receive from m_handlers(Node Protocol Handler)
@@ -294,7 +241,9 @@ In function Ipv4L3Protocol::Receive
 ipv4-list-routing.cc rounting input
 Node Id:3 retVal:1
 In function LteUeMac::DoReceivePhyPdu
-In function LteNetDevice::Receive()
+ns3::LteRlcHeader (Len=2 FI=2 E=0 SN=3) Payload Fragment [158:200]
+In function LteNetDevice::Receive() for node Id 4
+Payload (size=200)
 Called the callback function Node::NonPromiscReceiveFromDevice
 4 Protocol 2048 Promiscuous 0
 Called the callback function Ipv4L3Protocol::Receive from m_handlers(Node Protocol Handler)
@@ -312,7 +261,9 @@ In here
 1
 0
 In function LteUeMac::DoReceivePhyPdu
-In function LteNetDevice::Receive()
+ns3::LteRlcHeader (Len=2 FI=2 E=0 SN=3) Payload Fragment [158:200]
+In function LteNetDevice::Receive() for node Id 6
+Payload (size=200)
 Called the callback function Node::NonPromiscReceiveFromDevice
 6 Protocol 2048 Promiscuous 0
 Called the callback function Ipv4L3Protocol::Receive from m_handlers(Node Protocol Handler)
@@ -329,6 +280,3 @@ At time +5.08893s packet sink received 200 bytes from 7.0.0.2 port 49153 total R
 In here
 1
 0
-In function LteUePhy::DoSendSlMacPdu
-In function LteUePhy::DoSendSlMacPdu
-In function LteUePhy::DoSendSlMacPdu

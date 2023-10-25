@@ -107,6 +107,11 @@ LteRlcUm::DoTransmitPdcpPdu (Ptr<Packet> p)
       p->AddPacketTag (tag);
 
       NS_LOG_LOGIC ("Tx Buffer: New packet added");
+
+      std::cout << "In function LteRlcUm::DoTransmitPdcpPdu\n";
+      p->Print(std::cout);
+      std::cout << "\n";
+
       m_txBuffer.push_back (TxPdu (p, Simulator::Now ()));
       m_txBufferSize += p->GetSize ();
       NS_LOG_LOGIC ("NumOfBuffers = " << m_txBuffer.size () );
@@ -135,6 +140,8 @@ LteRlcUm::DoTransmitPdcpPdu (Ptr<Packet> p)
 void
 LteRlcUm::DoNotifyTxOpportunity (LteMacSapUser::TxOpportunityParameters txOpParams)
 {
+
+  std::cout << "In function LteRlcUm::DoNotifyTxOpportunity\n";
   NS_LOG_FUNCTION (this << m_rnti << (uint32_t) m_lcid << txOpParams.bytes);
 
   NS_ABORT_MSG_IF (m_srcL2Id != 0 && m_channelType != LteRlc::STCH,
@@ -166,6 +173,8 @@ LteRlcUm::DoNotifyTxOpportunity (LteMacSapUser::TxOpportunityParameters txOpPara
 
   Ptr<Packet> firstSegment = m_txBuffer.begin ()->m_pdu->Copy ();
   Time firstSegmentTime = m_txBuffer.begin ()->m_waitingSince;
+
+  
 
   NS_LOG_LOGIC ("SDUs in TxBuffer  = " << m_txBuffer.size ());
   NS_LOG_LOGIC ("First SDU buffer  = " << firstSegment);
@@ -330,6 +339,14 @@ LteRlcUm::DoNotifyTxOpportunity (LteMacSapUser::TxOpportunityParameters txOpPara
         }
 
     }
+    std::cout << "Printing m_txBuffer:\n";
+    for(auto x:m_txBuffer)
+    {
+      x.m_pdu->Print(std::cout);
+      std::cout << "\n";
+      std::cout << "waiting since: " << x.m_waitingSince << "\n";
+    }
+    std::cout << "Completed printing m_txBuffer:\n";
 
   // Build RLC header
   rlcHeader.SetSequenceNumber (m_sequenceNumber++);
@@ -405,18 +422,16 @@ LteRlcUm::DoNotifyTxOpportunity (LteMacSapUser::TxOpportunityParameters txOpPara
   params.componentCarrierId = txOpParams.componentCarrierId;
   params.discMsg = false;
   params.mibslMsg = false;
-  ////debug log
-  std::cout << "In function LteRlcUm::DoNotifyTxOpportunity\n";
-  std::cout << "pdu: ";params.pdu->Print(std::cout);std::cout << std::endl;
-  std::cout << "rnti: " << params.rnti << std::endl;
-  std::cout << "lcid: " << static_cast<int>(params.lcid) << std::endl;
-  std::cout << "layer: " << static_cast<int>(params.layer) << std::endl;
-  std::cout << "harqProcessId: " << static_cast<int>(params.harqProcessId) << std::endl;
-  std::cout << "componentCarrierId: " << static_cast<int>(params.componentCarrierId) << std::endl;
-  std::cout << "srcL2Id: " << params.srcL2Id << std::endl;
-  std::cout << "dstL2Id: " << params.dstL2Id << std::endl;
-  std::cout << "discMsg: " << params.discMsg << std::endl;
-  std::cout << "mibslMsg: " << params.mibslMsg << std::endl;
+  // std::cout << "pdu: ";params.pdu->Print(std::cout);std::cout << std::endl;
+  // std::cout << "rnti: " << params.rnti << std::endl;
+  // std::cout << "lcid: " << static_cast<int>(params.lcid) << std::endl;
+  // std::cout << "layer: " << static_cast<int>(params.layer) << std::endl;
+  // std::cout << "harqProcessId: " << static_cast<int>(params.harqProcessId) << std::endl;
+  // std::cout << "componentCarrierId: " << static_cast<int>(params.componentCarrierId) << std::endl;
+  // std::cout << "srcL2Id: " << params.srcL2Id << std::endl;
+  // std::cout << "dstL2Id: " << params.dstL2Id << std::endl;
+  // std::cout << "discMsg: " << params.discMsg << std::endl;
+  // std::cout << "mibslMsg: " << params.mibslMsg << std::endl;
 
   m_macSapProvider->TransmitPdu (params);
 

@@ -626,7 +626,7 @@ UdpSocketImpl::DoSendTo (Ptr<Packet> p, Ipv4Address dest, uint16_t port, uint8_t
     {
 
       //// Debug Logs
-      std::cout << "In GetRoutingProtocol!=0\n";
+      // std::cout << "In GetRoutingProtocol!=0\n";
       Ipv4Header header;
       header.SetDestination (dest);
       header.SetProtocol (UdpL4Protocol::PROT_NUMBER);
