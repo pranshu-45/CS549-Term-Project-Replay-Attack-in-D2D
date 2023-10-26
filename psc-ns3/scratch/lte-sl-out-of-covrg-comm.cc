@@ -177,19 +177,19 @@ void replayFromIp(ApplicationContainer &serverApps, ApplicationContainer &malici
   Ipv4Address groupAddress4 ("225.0.0.0");
   remoteAddress = InetSocketAddress (groupAddress4, 8000);
 
-  Ptr<Packet> receivedIpPacket = netDevice->ReceivedIpLayerPacket[0];
+  Ptr<Packet> receivedIpPacket = netDevice->ReceivedIpLayerPacket[0]->Copy();
 
-  // Ipv4Header modifiedHeader;
-  // receivedIpPacket->PeekHeader (modifiedHeader);
-  // std::cout << "header source received is " << modifiedHeader.GetSource() << "\n";
-  // std::cout << "header dest received is " << modifiedHeader.GetDestination() << "\n";
-  // modifiedHeader.SetDestination(groupAddress4);
-  // std::cout << "header dest changed is " << modifiedHeader.GetDestination() << "\n";
+  Ipv4Header modifiedHeader;
+  receivedIpPacket->PeekHeader (modifiedHeader);
+  std::cout << "header source received is " << modifiedHeader.GetSource() << "\n";
+  std::cout << "header dest received is " << modifiedHeader.GetDestination() << "\n";
+  modifiedHeader.SetDestination(groupAddress4);
+  std::cout << "header dest changed is " << modifiedHeader.GetDestination() << "\n";
   
   
-  // Ipv4Header oldHeader;
-  // receivedIpPacket->RemoveHeader(oldHeader);
-  // receivedIpPacket->AddHeader(modifiedHeader);
+  Ipv4Header oldHeader;
+  receivedIpPacket->RemoveHeader(oldHeader);
+  receivedIpPacket->AddHeader(modifiedHeader);
   
   receivedIpPacket->Print(std::cout);
   std::cout << "\n";
@@ -197,7 +197,6 @@ void replayFromIp(ApplicationContainer &serverApps, ApplicationContainer &malici
   Ptr<Node> destNode = serverApps.Get (0)->GetNode ();
   // std::cout << "Remote Address: " << remoteAddress << "\n";
   netDevice->Send(receivedIpPacket,remoteAddress,2048);
-  
 }
 
 void checkLowerPacket(Ptr<Node> ueNode,ApplicationContainer &serverApps, ApplicationContainer &serverApps2){
@@ -425,7 +424,7 @@ int main (int argc, char *argv[])
   InternetStackHelper internet;
   internet.Install (ueNodes);
   uint32_t groupL2Address = 255;
-  Ipv4Address groupAddress4 ("225.0.0.0");     //use multicast address as destination
+  Ipv4Address groupAddress4 ("7.0.0.3");     //use multicast address as destination
   Ipv6Address groupAddress6 ("ff0e::1");     //use multicast address as destination
   Address remoteAddress;
   Address localAddress,localAddress2,localAddress3;
@@ -617,8 +616,9 @@ int main (int argc, char *argv[])
 
   Simulator::Stop (simTime);
   //// Scheduling the replay function
-  Simulator::Schedule (Time(Seconds(4)),&replay,ueNodes.Get(2), serverApps, serverApps2);
-  Simulator::Schedule (Time(Seconds(5)),&replayFromIp,serverApps, serverApps2);
+  // Simulator::Schedule (Time(Seconds(5)),&replay,ueNodes.Get(2), serverApps, serverApps2);
+  Simulator::Schedule (Time(Seconds(4)),&replayFromIp,serverApps, serverApps2);
+  // Simulator::Schedule (Time(Seconds(5)),&replayFromIp,serverApps, serverApps2);
   
   Simulator::Run ();
   Simulator::Destroy ();

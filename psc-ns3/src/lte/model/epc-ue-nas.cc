@@ -241,7 +241,6 @@ bool
 EpcUeNas::Send (Ptr<Packet> packet, uint16_t protocolNumber)
 {
   NS_LOG_FUNCTION (this << packet << protocolNumber);
-
   switch (m_state)
     {
     case ACTIVE:

@@ -1,0 +1,418 @@
+Consolidate compiler generated dependencies of target liblte-obj
+Consolidate compiler generated dependencies of target scratch_lte-sl-out-of-covrg-comm
+[  0%] Building CXX object scratch/CMakeFiles/scratch_lte-sl-out-of-covrg-comm.dir/lte-sl-out-of-covrg-comm.cc.o
+[  0%] Linking CXX executable ../../build/scratch/ns3-dev-lte-sl-out-of-covrg-comm-default
+UE 1 node id = [3]
+UE 2 node id = [4]
+UE 3 node id = [5]
+UE 4 node id = [6]
+Created the malicious and visitor node
+Installed LteHelper in UeNodes
+Tx address: 7.0.0.2
+Rx address: 7.0.0.3
+Rx address: 7.0.0.4
+Rx address: 7.0.0.5
+m_local:00-00-00 Valid Argument:0
+Connect Function: m_connected=1 logs 04-07-07:00:00:03:40:1f:00
+In ScheduleNextTx, m_maxBytes=0, m_totBytes:0
+before Simulator::Schedule
+In UDP::DoSendTo() 4 args
+Source of packet:7.0.0.2
+In function LteUeNetDevice::Send
+ns3::Ipv4Header (tos 0x0 DSCP Default ECN Not-ECT ttl 64 id 0 protocol 17 offset (bytes) 0 flags [none] length: 228 7.0.0.2 > 7.0.0.3) ns3::UdpHeader (length: 208 49153 > 8000) Payload (size=200)
+Send dest: 02-06-ff:ff:ff:ff:ff:ff
+Protocol Number: 2048
+in function epcuenas::send
+In function LteUeRrc::DoSendDataToGroup
+ns3::Ipv4Header (tos 0x0 DSCP Default ECN Not-ECT ttl 64 id 0 protocol 17 offset (bytes) 0 flags [none] length: 228 7.0.0.2 > 7.0.0.3) ns3::UdpHeader (length: 208 49153 > 8000) Payload (size=200)
+In function LtePdcp::DoTransmitPdcpSdu
+ns3::Ipv4Header (tos 0x0 DSCP Default ECN Not-ECT ttl 64 id 0 protocol 17 offset (bytes) 0 flags [none] length: 228 7.0.0.2 > 7.0.0.3) ns3::UdpHeader (length: 208 49153 > 8000) Payload (size=200)
+In function LteRlcSpecificLteRlcSapProvider<C>::TransmitPdcpPdu
+ns3::LteSlPdcpHeader (SDU type=0 PGK Index=0 PTK/KD_SESS=0 SN=0) ns3::Ipv4Header (tos 0x0 DSCP Default ECN Not-ECT ttl 64 id 0 protocol 17 offset (bytes) 0 flags [none] length: 228 7.0.0.2 > 7.0.0.3) ns3::UdpHeader (length: 208 49153 > 8000) Payload (size=200)
+In function LteRlcUm::DoTransmitPdcpPdu
+ns3::LteSlPdcpHeader (SDU type=0 PGK Index=0 PTK/KD_SESS=0 SN=0) ns3::Ipv4Header (tos 0x0 DSCP Default ECN Not-ECT ttl 64 id 0 protocol 17 offset (bytes) 0 flags [none] length: 228 7.0.0.2 > 7.0.0.3) ns3::UdpHeader (length: 208 49153 > 8000) Payload (size=200)
+In ScheduleNextTx, m_maxBytes=0, m_totBytes:200
+before Simulator::Schedule
+In function LteRlcUm::DoNotifyTxOpportunity
+Printing m_txBuffer:
+Payload Fragment [158:200]
+waiting since: +3e+09ns
+Completed printing m_txBuffer:
+In function LteUeMac::DoReceivePhyPdu
+ns3::LteRlcHeader (Len=2 FI=1 E=0 SN=0) ns3::LteSlPdcpHeader (SDU type=0 PGK Index=0 PTK/KD_SESS=0 SN=0) ns3::Ipv4Header (tos 0x0 DSCP Default ECN Not-ECT ttl 64 id 0 protocol 17 offset (bytes) 0 flags [none] length: 228 7.0.0.2 > 7.0.0.3) ns3::UdpHeader (length: 208 49153 > 8000) Payload Fragment [0:158]
+In function LteUeMac::DoReceivePhyPdu
+ns3::LteRlcHeader (Len=2 FI=1 E=0 SN=0) ns3::LteSlPdcpHeader (SDU type=0 PGK Index=0 PTK/KD_SESS=0 SN=0) ns3::Ipv4Header (tos 0x0 DSCP Default ECN Not-ECT ttl 64 id 0 protocol 17 offset (bytes) 0 flags [none] length: 228 7.0.0.2 > 7.0.0.3) ns3::UdpHeader (length: 208 49153 > 8000) Payload Fragment [0:158]
+In function LteUeMac::DoReceivePhyPdu
+ns3::LteRlcHeader (Len=2 FI=1 E=0 SN=0) ns3::LteSlPdcpHeader (SDU type=0 PGK Index=0 PTK/KD_SESS=0 SN=0) ns3::Ipv4Header (tos 0x0 DSCP Default ECN Not-ECT ttl 64 id 0 protocol 17 offset (bytes) 0 flags [none] length: 228 7.0.0.2 > 7.0.0.3) ns3::UdpHeader (length: 208 49153 > 8000) Payload Fragment [0:158]
+In function LteRlcUm::DoNotifyTxOpportunity
+Printing m_txBuffer:
+Completed printing m_txBuffer:
+In function LteUeMac::DoReceivePhyPdu
+ns3::LteRlcHeader (Len=2 FI=2 E=0 SN=1) Payload Fragment [158:200]
+In function LteNetDevice::Receive() for node Id 4
+ns3::Ipv4Header (tos 0x0 DSCP Default ECN Not-ECT ttl 64 id 0 protocol 17 offset (bytes) 0 flags [none] length: 228 7.0.0.2 > 7.0.0.3) ns3::UdpHeader (length: 208 49153 > 8000) Payload (size=200)
+Called the callback function Node::NonPromiscReceiveFromDevice
+4 Protocol 2048 Promiscuous 0
+Called the callback function Ipv4L3Protocol::Receive from m_handlers(Node Protocol Handler)
+Packet from 00-00-00 received on node 4
+In function Ipv4L3Protocol::Receive
+ipv4-list-routing.cc rounting input
+Node Id:4 retVal:1
+Pushed packet into m_deliveryQueue, UDPsocket::ForwardUp function
+In handle Read function
+In UDP::RecvFrom(maxsize,flags,&fromAddress)
+Payload (size=200)From Address:7.0.0.2
+Ipv4 PKTINFO [DestAddr: 7.0.0.3, RecvIf:0, TTL:64]  falsePayload (size=200)
+At time +3.08893s packet sink received 200 bytes from 7.0.0.2 port 49153 total Rx 200 bytes
+In here
+1
+0
+In function LteUeMac::DoReceivePhyPdu
+ns3::LteRlcHeader (Len=2 FI=2 E=0 SN=1) Payload Fragment [158:200]
+In function LteNetDevice::Receive() for node Id 5
+ns3::Ipv4Header (tos 0x0 DSCP Default ECN Not-ECT ttl 64 id 0 protocol 17 offset (bytes) 0 flags [none] length: 228 7.0.0.2 > 7.0.0.3) ns3::UdpHeader (length: 208 49153 > 8000) Payload (size=200)
+Called the callback function Node::NonPromiscReceiveFromDevice
+5 Protocol 2048 Promiscuous 0
+Called the callback function Ipv4L3Protocol::Receive from m_handlers(Node Protocol Handler)
+Packet from 00-00-00 received on node 5
+In function Ipv4L3Protocol::Receive
+ipv4-list-routing.cc rounting input
+Node Id:5 retVal:0
+In function LteUeNetDevice::Send
+ns3::Ipv4Header (tos 0x0 DSCP Default ECN Not-ECT ttl 63 id 0 protocol 17 offset (bytes) 0 flags [none] length: 228 7.0.0.2 > 7.0.0.3) ns3::UdpHeader (length: 208 49153 > 8000) Payload (size=200)
+Send dest: 02-06-ff:ff:ff:ff:ff:ff
+Protocol Number: 2048
+in function epcuenas::send
+In function LteUeRrc::DoSendDataToGroup
+ns3::Ipv4Header (tos 0x0 DSCP Default ECN Not-ECT ttl 63 id 0 protocol 17 offset (bytes) 0 flags [none] length: 228 7.0.0.2 > 7.0.0.3) ns3::UdpHeader (length: 208 49153 > 8000) Payload (size=200)
+In function LtePdcp::DoTransmitPdcpSdu
+ns3::Ipv4Header (tos 0x0 DSCP Default ECN Not-ECT ttl 63 id 0 protocol 17 offset (bytes) 0 flags [none] length: 228 7.0.0.2 > 7.0.0.3) ns3::UdpHeader (length: 208 49153 > 8000) Payload (size=200)
+In function LteRlcSpecificLteRlcSapProvider<C>::TransmitPdcpPdu
+ns3::LteSlPdcpHeader (SDU type=0 PGK Index=0 PTK/KD_SESS=0 SN=0) ns3::Ipv4Header (tos 0x0 DSCP Default ECN Not-ECT ttl 63 id 0 protocol 17 offset (bytes) 0 flags [none] length: 228 7.0.0.2 > 7.0.0.3) ns3::UdpHeader (length: 208 49153 > 8000) Payload (size=200)
+In function LteRlcUm::DoTransmitPdcpPdu
+ns3::LteSlPdcpHeader (SDU type=0 PGK Index=0 PTK/KD_SESS=0 SN=0) ns3::Ipv4Header (tos 0x0 DSCP Default ECN Not-ECT ttl 63 id 0 protocol 17 offset (bytes) 0 flags [none] length: 228 7.0.0.2 > 7.0.0.3) ns3::UdpHeader (length: 208 49153 > 8000) Payload (size=200)
+In function LteUeMac::DoReceivePhyPdu
+ns3::LteRlcHeader (Len=2 FI=2 E=0 SN=1) Payload Fragment [158:200]
+In function LteNetDevice::Receive() for node Id 6
+ns3::Ipv4Header (tos 0x0 DSCP Default ECN Not-ECT ttl 64 id 0 protocol 17 offset (bytes) 0 flags [none] length: 228 7.0.0.2 > 7.0.0.3) ns3::UdpHeader (length: 208 49153 > 8000) Payload (size=200)
+Called the callback function Node::NonPromiscReceiveFromDevice
+6 Protocol 2048 Promiscuous 0
+Called the callback function Ipv4L3Protocol::Receive from m_handlers(Node Protocol Handler)
+Packet from 00-00-00 received on node 6
+In function Ipv4L3Protocol::Receive
+ipv4-list-routing.cc rounting input
+Node Id:6 retVal:0
+In function LteUeNetDevice::Send
+ns3::Ipv4Header (tos 0x0 DSCP Default ECN Not-ECT ttl 63 id 0 protocol 17 offset (bytes) 0 flags [none] length: 228 7.0.0.2 > 7.0.0.3) ns3::UdpHeader (length: 208 49153 > 8000) Payload (size=200)
+Send dest: 02-06-ff:ff:ff:ff:ff:ff
+Protocol Number: 2048
+in function epcuenas::send
+In function LteUeRrc::DoSendDataToGroup
+ns3::Ipv4Header (tos 0x0 DSCP Default ECN Not-ECT ttl 63 id 0 protocol 17 offset (bytes) 0 flags [none] length: 228 7.0.0.2 > 7.0.0.3) ns3::UdpHeader (length: 208 49153 > 8000) Payload (size=200)
+In function LtePdcp::DoTransmitPdcpSdu
+ns3::Ipv4Header (tos 0x0 DSCP Default ECN Not-ECT ttl 63 id 0 protocol 17 offset (bytes) 0 flags [none] length: 228 7.0.0.2 > 7.0.0.3) ns3::UdpHeader (length: 208 49153 > 8000) Payload (size=200)
+In function LteRlcSpecificLteRlcSapProvider<C>::TransmitPdcpPdu
+ns3::LteSlPdcpHeader (SDU type=0 PGK Index=0 PTK/KD_SESS=0 SN=0) ns3::Ipv4Header (tos 0x0 DSCP Default ECN Not-ECT ttl 63 id 0 protocol 17 offset (bytes) 0 flags [none] length: 228 7.0.0.2 > 7.0.0.3) ns3::UdpHeader (length: 208 49153 > 8000) Payload (size=200)
+In function LteRlcUm::DoTransmitPdcpPdu
+ns3::LteSlPdcpHeader (SDU type=0 PGK Index=0 PTK/KD_SESS=0 SN=0) ns3::Ipv4Header (tos 0x0 DSCP Default ECN Not-ECT ttl 63 id 0 protocol 17 offset (bytes) 0 flags [none] length: 228 7.0.0.2 > 7.0.0.3) ns3::UdpHeader (length: 208 49153 > 8000) Payload (size=200)
+In function LteRlcUm::DoNotifyTxOpportunity
+Printing m_txBuffer:
+Payload Fragment [158:200]
+waiting since: +3.08893e+09ns
+Completed printing m_txBuffer:
+In function LteRlcUm::DoNotifyTxOpportunity
+Printing m_txBuffer:
+Payload Fragment [158:200]
+waiting since: +3.08893e+09ns
+Completed printing m_txBuffer:
+In function LteUeMac::DoReceivePhyPdu
+ns3::LteRlcHeader (Len=2 FI=1 E=0 SN=0) ns3::LteSlPdcpHeader (SDU type=0 PGK Index=0 PTK/KD_SESS=0 SN=0) ns3::Ipv4Header (tos 0x0 DSCP Default ECN Not-ECT ttl 63 id 0 protocol 17 offset (bytes) 0 flags [none] length: 228 7.0.0.2 > 7.0.0.3) ns3::UdpHeader (length: 208 49153 > 8000) Payload Fragment [0:158]
+In function LteUeMac::DoReceivePhyPdu
+ns3::LteRlcHeader (Len=2 FI=1 E=0 SN=0) ns3::LteSlPdcpHeader (SDU type=0 PGK Index=0 PTK/KD_SESS=0 SN=0) ns3::Ipv4Header (tos 0x0 DSCP Default ECN Not-ECT ttl 63 id 0 protocol 17 offset (bytes) 0 flags [none] length: 228 7.0.0.2 > 7.0.0.3) ns3::UdpHeader (length: 208 49153 > 8000) Payload Fragment [0:158]
+In function LteUeMac::DoReceivePhyPdu
+ns3::LteRlcHeader (Len=2 FI=1 E=0 SN=0) ns3::LteSlPdcpHeader (SDU type=0 PGK Index=0 PTK/KD_SESS=0 SN=0) ns3::Ipv4Header (tos 0x0 DSCP Default ECN Not-ECT ttl 63 id 0 protocol 17 offset (bytes) 0 flags [none] length: 228 7.0.0.2 > 7.0.0.3) ns3::UdpHeader (length: 208 49153 > 8000) Payload Fragment [0:158]
+In function LteUeMac::DoReceivePhyPdu
+ns3::LteRlcHeader (Len=2 FI=1 E=0 SN=0) ns3::LteSlPdcpHeader (SDU type=0 PGK Index=0 PTK/KD_SESS=0 SN=0) ns3::Ipv4Header (tos 0x0 DSCP Default ECN Not-ECT ttl 63 id 0 protocol 17 offset (bytes) 0 flags [none] length: 228 7.0.0.2 > 7.0.0.3) ns3::UdpHeader (length: 208 49153 > 8000) Payload Fragment [0:158]
+In function LteRlcUm::DoNotifyTxOpportunity
+Printing m_txBuffer:
+Completed printing m_txBuffer:
+In function LteRlcUm::DoNotifyTxOpportunity
+Printing m_txBuffer:
+Completed printing m_txBuffer:
+In function LteUeMac::DoReceivePhyPdu
+ns3::LteRlcHeader (Len=2 FI=2 E=0 SN=1) Payload Fragment [158:200]
+In function LteNetDevice::Receive() for node Id 3
+ns3::Ipv4Header (tos 0x0 DSCP Default ECN Not-ECT ttl 63 id 0 protocol 17 offset (bytes) 0 flags [none] length: 228 7.0.0.2 > 7.0.0.3) ns3::UdpHeader (length: 208 49153 > 8000) Payload (size=200)
+Called the callback function Node::NonPromiscReceiveFromDevice
+3 Protocol 2048 Promiscuous 0
+Called the callback function Ipv4L3Protocol::Receive from m_handlers(Node Protocol Handler)
+Packet from 00-00-00 received on node 3
+In function Ipv4L3Protocol::Receive
+ipv4-list-routing.cc rounting input
+Node Id:3 retVal:0
+In function LteUeNetDevice::Send
+ns3::Ipv4Header (tos 0x0 DSCP Default ECN Not-ECT ttl 62 id 0 protocol 17 offset (bytes) 0 flags [none] length: 228 7.0.0.2 > 7.0.0.3) ns3::UdpHeader (length: 208 49153 > 8000) Payload (size=200)
+Send dest: 02-06-ff:ff:ff:ff:ff:ff
+Protocol Number: 2048
+in function epcuenas::send
+In function LteUeRrc::DoSendDataToGroup
+ns3::Ipv4Header (tos 0x0 DSCP Default ECN Not-ECT ttl 62 id 0 protocol 17 offset (bytes) 0 flags [none] length: 228 7.0.0.2 > 7.0.0.3) ns3::UdpHeader (length: 208 49153 > 8000) Payload (size=200)
+In function LtePdcp::DoTransmitPdcpSdu
+ns3::Ipv4Header (tos 0x0 DSCP Default ECN Not-ECT ttl 62 id 0 protocol 17 offset (bytes) 0 flags [none] length: 228 7.0.0.2 > 7.0.0.3) ns3::UdpHeader (length: 208 49153 > 8000) Payload (size=200)
+In function LteRlcSpecificLteRlcSapProvider<C>::TransmitPdcpPdu
+ns3::LteSlPdcpHeader (SDU type=0 PGK Index=0 PTK/KD_SESS=0 SN=1) ns3::Ipv4Header (tos 0x0 DSCP Default ECN Not-ECT ttl 62 id 0 protocol 17 offset (bytes) 0 flags [none] length: 228 7.0.0.2 > 7.0.0.3) ns3::UdpHeader (length: 208 49153 > 8000) Payload (size=200)
+In function LteRlcUm::DoTransmitPdcpPdu
+ns3::LteSlPdcpHeader (SDU type=0 PGK Index=0 PTK/KD_SESS=0 SN=1) ns3::Ipv4Header (tos 0x0 DSCP Default ECN Not-ECT ttl 62 id 0 protocol 17 offset (bytes) 0 flags [none] length: 228 7.0.0.2 > 7.0.0.3) ns3::UdpHeader (length: 208 49153 > 8000) Payload (size=200)
+In function LteUeMac::DoReceivePhyPdu
+ns3::LteRlcHeader (Len=2 FI=2 E=0 SN=1) Payload Fragment [158:200]
+In function LteNetDevice::Receive() for node Id 3
+ns3::Ipv4Header (tos 0x0 DSCP Default ECN Not-ECT ttl 63 id 0 protocol 17 offset (bytes) 0 flags [none] length: 228 7.0.0.2 > 7.0.0.3) ns3::UdpHeader (length: 208 49153 > 8000) Payload (size=200)
+Called the callback function Node::NonPromiscReceiveFromDevice
+3 Protocol 2048 Promiscuous 0
+Called the callback function Ipv4L3Protocol::Receive from m_handlers(Node Protocol Handler)
+Packet from 00-00-00 received on node 3
+In function Ipv4L3Protocol::Receive
+ipv4-list-routing.cc rounting input
+Node Id:3 retVal:0
+In function LteUeNetDevice::Send
+ns3::Ipv4Header (tos 0x0 DSCP Default ECN Not-ECT ttl 62 id 0 protocol 17 offset (bytes) 0 flags [none] length: 228 7.0.0.2 > 7.0.0.3) ns3::UdpHeader (length: 208 49153 > 8000) Payload (size=200)
+Send dest: 02-06-ff:ff:ff:ff:ff:ff
+Protocol Number: 2048
+in function epcuenas::send
+In function LteUeRrc::DoSendDataToGroup
+ns3::Ipv4Header (tos 0x0 DSCP Default ECN Not-ECT ttl 62 id 0 protocol 17 offset (bytes) 0 flags [none] length: 228 7.0.0.2 > 7.0.0.3) ns3::UdpHeader (length: 208 49153 > 8000) Payload (size=200)
+In function LtePdcp::DoTransmitPdcpSdu
+ns3::Ipv4Header (tos 0x0 DSCP Default ECN Not-ECT ttl 62 id 0 protocol 17 offset (bytes) 0 flags [none] length: 228 7.0.0.2 > 7.0.0.3) ns3::UdpHeader (length: 208 49153 > 8000) Payload (size=200)
+In function LteRlcSpecificLteRlcSapProvider<C>::TransmitPdcpPdu
+ns3::LteSlPdcpHeader (SDU type=0 PGK Index=0 PTK/KD_SESS=0 SN=2) ns3::Ipv4Header (tos 0x0 DSCP Default ECN Not-ECT ttl 62 id 0 protocol 17 offset (bytes) 0 flags [none] length: 228 7.0.0.2 > 7.0.0.3) ns3::UdpHeader (length: 208 49153 > 8000) Payload (size=200)
+In function LteRlcUm::DoTransmitPdcpPdu
+ns3::LteSlPdcpHeader (SDU type=0 PGK Index=0 PTK/KD_SESS=0 SN=2) ns3::Ipv4Header (tos 0x0 DSCP Default ECN Not-ECT ttl 62 id 0 protocol 17 offset (bytes) 0 flags [none] length: 228 7.0.0.2 > 7.0.0.3) ns3::UdpHeader (length: 208 49153 > 8000) Payload (size=200)
+In function LteUeMac::DoReceivePhyPdu
+ns3::LteRlcHeader (Len=2 FI=2 E=0 SN=1) Payload Fragment [158:200]
+In function LteNetDevice::Receive() for node Id 4
+ns3::Ipv4Header (tos 0x0 DSCP Default ECN Not-ECT ttl 63 id 0 protocol 17 offset (bytes) 0 flags [none] length: 228 7.0.0.2 > 7.0.0.3) ns3::UdpHeader (length: 208 49153 > 8000) Payload (size=200)
+Called the callback function Node::NonPromiscReceiveFromDevice
+4 Protocol 2048 Promiscuous 0
+Called the callback function Ipv4L3Protocol::Receive from m_handlers(Node Protocol Handler)
+Packet from 00-00-00 received on node 4
+In function Ipv4L3Protocol::Receive
+ipv4-list-routing.cc rounting input
+Node Id:4 retVal:1
+Pushed packet into m_deliveryQueue, UDPsocket::ForwardUp function
+In handle Read function
+In UDP::RecvFrom(maxsize,flags,&fromAddress)
+Payload (size=200)From Address:7.0.0.2
+Ipv4 PKTINFO [DestAddr: 7.0.0.3, RecvIf:0, TTL:63]  falsePayload (size=200)
+At time +3.16893s packet sink received 200 bytes from 7.0.0.2 port 49153 total Rx 400 bytes
+In here
+1
+0
+In function LteUeMac::DoReceivePhyPdu
+ns3::LteRlcHeader (Len=2 FI=2 E=0 SN=1) Payload Fragment [158:200]
+In function LteNetDevice::Receive() for node Id 4
+ns3::Ipv4Header (tos 0x0 DSCP Default ECN Not-ECT ttl 63 id 0 protocol 17 offset (bytes) 0 flags [none] length: 228 7.0.0.2 > 7.0.0.3) ns3::UdpHeader (length: 208 49153 > 8000) Payload (size=200)
+Called the callback function Node::NonPromiscReceiveFromDevice
+4 Protocol 2048 Promiscuous 0
+Called the callback function Ipv4L3Protocol::Receive from m_handlers(Node Protocol Handler)
+Packet from 00-00-00 received on node 4
+In function Ipv4L3Protocol::Receive
+ipv4-list-routing.cc rounting input
+Node Id:4 retVal:1
+Pushed packet into m_deliveryQueue, UDPsocket::ForwardUp function
+In handle Read function
+In UDP::RecvFrom(maxsize,flags,&fromAddress)
+Payload (size=200)From Address:7.0.0.2
+Ipv4 PKTINFO [DestAddr: 7.0.0.3, RecvIf:0, TTL:63]  falsePayload (size=200)
+At time +3.16893s packet sink received 200 bytes from 7.0.0.2 port 49153 total Rx 600 bytes
+In here
+1
+0
+In function LteRlcUm::DoNotifyTxOpportunity
+Printing m_txBuffer:
+Payload Fragment [158:200]
+waiting since: +3.16893e+09ns
+ns3::LteSlPdcpHeader (SDU type=0 PGK Index=0 PTK/KD_SESS=0 SN=2) ns3::Ipv4Header (tos 0x0 DSCP Default ECN Not-ECT ttl 62 id 0 protocol 17 offset (bytes) 0 flags [none] length: 228 7.0.0.2 > 7.0.0.3) ns3::UdpHeader (length: 208 49153 > 8000) Payload (size=200)
+waiting since: +3.16893e+09ns
+Completed printing m_txBuffer:
+In function LteUeMac::DoReceivePhyPdu
+ns3::LteRlcHeader (Len=2 FI=1 E=0 SN=2) ns3::LteSlPdcpHeader (SDU type=0 PGK Index=0 PTK/KD_SESS=0 SN=1) ns3::Ipv4Header (tos 0x0 DSCP Default ECN Not-ECT ttl 62 id 0 protocol 17 offset (bytes) 0 flags [none] length: 228 7.0.0.2 > 7.0.0.3) ns3::UdpHeader (length: 208 49153 > 8000) Payload Fragment [0:158]
+In function LteUeMac::DoReceivePhyPdu
+ns3::LteRlcHeader (Len=2 FI=1 E=0 SN=2) ns3::LteSlPdcpHeader (SDU type=0 PGK Index=0 PTK/KD_SESS=0 SN=1) ns3::Ipv4Header (tos 0x0 DSCP Default ECN Not-ECT ttl 62 id 0 protocol 17 offset (bytes) 0 flags [none] length: 228 7.0.0.2 > 7.0.0.3) ns3::UdpHeader (length: 208 49153 > 8000) Payload Fragment [0:158]
+In function LteUeMac::DoReceivePhyPdu
+ns3::LteRlcHeader (Len=2 FI=1 E=0 SN=2) ns3::LteSlPdcpHeader (SDU type=0 PGK Index=0 PTK/KD_SESS=0 SN=1) ns3::Ipv4Header (tos 0x0 DSCP Default ECN Not-ECT ttl 62 id 0 protocol 17 offset (bytes) 0 flags [none] length: 228 7.0.0.2 > 7.0.0.3) ns3::UdpHeader (length: 208 49153 > 8000) Payload Fragment [0:158]
+In function LteRlcUm::DoNotifyTxOpportunity
+Printing m_txBuffer:
+Payload Fragment [114:200]
+waiting since: +3.16893e+09ns
+Completed printing m_txBuffer:
+In function LteUeMac::DoReceivePhyPdu
+ns3::LteRlcHeader (Len=4 FI=3 E=1 SN=3 E=0 LI=42 ) Payload Fragment [158:200] ns3::LteSlPdcpHeader (SDU type=0 PGK Index=0 PTK/KD_SESS=0 SN=2) ns3::Ipv4Header (tos 0x0 DSCP Default ECN Not-ECT ttl 62 id 0 protocol 17 offset (bytes) 0 flags [none] length: 228 7.0.0.2 > 7.0.0.3) ns3::UdpHeader (length: 208 49153 > 8000) Payload Fragment [0:114]
+In function LteNetDevice::Receive() for node Id 4
+ns3::Ipv4Header (tos 0x0 DSCP Default ECN Not-ECT ttl 62 id 0 protocol 17 offset (bytes) 0 flags [none] length: 228 7.0.0.2 > 7.0.0.3) ns3::UdpHeader (length: 208 49153 > 8000) Payload (size=200)
+Called the callback function Node::NonPromiscReceiveFromDevice
+4 Protocol 2048 Promiscuous 0
+Called the callback function Ipv4L3Protocol::Receive from m_handlers(Node Protocol Handler)
+Packet from 00-00-00 received on node 4
+In function Ipv4L3Protocol::Receive
+ipv4-list-routing.cc rounting input
+Node Id:4 retVal:1
+Pushed packet into m_deliveryQueue, UDPsocket::ForwardUp function
+In handle Read function
+In UDP::RecvFrom(maxsize,flags,&fromAddress)
+Payload (size=200)From Address:7.0.0.2
+Ipv4 PKTINFO [DestAddr: 7.0.0.3, RecvIf:0, TTL:62]  falsePayload (size=200)
+At time +3.24893s packet sink received 200 bytes from 7.0.0.2 port 49153 total Rx 800 bytes
+In here
+1
+0
+In function LteUeMac::DoReceivePhyPdu
+ns3::LteRlcHeader (Len=4 FI=3 E=1 SN=3 E=0 LI=42 ) Payload Fragment [158:200] ns3::LteSlPdcpHeader (SDU type=0 PGK Index=0 PTK/KD_SESS=0 SN=2) ns3::Ipv4Header (tos 0x0 DSCP Default ECN Not-ECT ttl 62 id 0 protocol 17 offset (bytes) 0 flags [none] length: 228 7.0.0.2 > 7.0.0.3) ns3::UdpHeader (length: 208 49153 > 8000) Payload Fragment [0:114]
+In function LteNetDevice::Receive() for node Id 5
+ns3::Ipv4Header (tos 0x0 DSCP Default ECN Not-ECT ttl 62 id 0 protocol 17 offset (bytes) 0 flags [none] length: 228 7.0.0.2 > 7.0.0.3) ns3::UdpHeader (length: 208 49153 > 8000) Payload (size=200)
+Called the callback function Node::NonPromiscReceiveFromDevice
+5 Protocol 2048 Promiscuous 0
+Called the callback function Ipv4L3Protocol::Receive from m_handlers(Node Protocol Handler)
+Packet from 00-00-00 received on node 5
+In function Ipv4L3Protocol::Receive
+ipv4-list-routing.cc rounting input
+Node Id:5 retVal:0
+In function LteUeNetDevice::Send
+ns3::Ipv4Header (tos 0x0 DSCP Default ECN Not-ECT ttl 61 id 0 protocol 17 offset (bytes) 0 flags [none] length: 228 7.0.0.2 > 7.0.0.3) ns3::UdpHeader (length: 208 49153 > 8000) Payload (size=200)
+Send dest: 02-06-ff:ff:ff:ff:ff:ff
+Protocol Number: 2048
+in function epcuenas::send
+In function LteUeRrc::DoSendDataToGroup
+ns3::Ipv4Header (tos 0x0 DSCP Default ECN Not-ECT ttl 61 id 0 protocol 17 offset (bytes) 0 flags [none] length: 228 7.0.0.2 > 7.0.0.3) ns3::UdpHeader (length: 208 49153 > 8000) Payload (size=200)
+In function LtePdcp::DoTransmitPdcpSdu
+ns3::Ipv4Header (tos 0x0 DSCP Default ECN Not-ECT ttl 61 id 0 protocol 17 offset (bytes) 0 flags [none] length: 228 7.0.0.2 > 7.0.0.3) ns3::UdpHeader (length: 208 49153 > 8000) Payload (size=200)
+In function LteRlcSpecificLteRlcSapProvider<C>::TransmitPdcpPdu
+ns3::LteSlPdcpHeader (SDU type=0 PGK Index=0 PTK/KD_SESS=0 SN=1) ns3::Ipv4Header (tos 0x0 DSCP Default ECN Not-ECT ttl 61 id 0 protocol 17 offset (bytes) 0 flags [none] length: 228 7.0.0.2 > 7.0.0.3) ns3::UdpHeader (length: 208 49153 > 8000) Payload (size=200)
+In function LteRlcUm::DoTransmitPdcpPdu
+ns3::LteSlPdcpHeader (SDU type=0 PGK Index=0 PTK/KD_SESS=0 SN=1) ns3::Ipv4Header (tos 0x0 DSCP Default ECN Not-ECT ttl 61 id 0 protocol 17 offset (bytes) 0 flags [none] length: 228 7.0.0.2 > 7.0.0.3) ns3::UdpHeader (length: 208 49153 > 8000) Payload (size=200)
+In function LteUeMac::DoReceivePhyPdu
+ns3::LteRlcHeader (Len=4 FI=3 E=1 SN=3 E=0 LI=42 ) Payload Fragment [158:200] ns3::LteSlPdcpHeader (SDU type=0 PGK Index=0 PTK/KD_SESS=0 SN=2) ns3::Ipv4Header (tos 0x0 DSCP Default ECN Not-ECT ttl 62 id 0 protocol 17 offset (bytes) 0 flags [none] length: 228 7.0.0.2 > 7.0.0.3) ns3::UdpHeader (length: 208 49153 > 8000) Payload Fragment [0:114]
+In function LteNetDevice::Receive() for node Id 6
+ns3::Ipv4Header (tos 0x0 DSCP Default ECN Not-ECT ttl 62 id 0 protocol 17 offset (bytes) 0 flags [none] length: 228 7.0.0.2 > 7.0.0.3) ns3::UdpHeader (length: 208 49153 > 8000) Payload (size=200)
+Called the callback function Node::NonPromiscReceiveFromDevice
+6 Protocol 2048 Promiscuous 0
+Called the callback function Ipv4L3Protocol::Receive from m_handlers(Node Protocol Handler)
+Packet from 00-00-00 received on node 6
+In function Ipv4L3Protocol::Receive
+ipv4-list-routing.cc rounting input
+Node Id:6 retVal:0
+In function LteUeNetDevice::Send
+ns3::Ipv4Header (tos 0x0 DSCP Default ECN Not-ECT ttl 61 id 0 protocol 17 offset (bytes) 0 flags [none] length: 228 7.0.0.2 > 7.0.0.3) ns3::UdpHeader (length: 208 49153 > 8000) Payload (size=200)
+Send dest: 02-06-ff:ff:ff:ff:ff:ff
+Protocol Number: 2048
+in function epcuenas::send
+In function LteUeRrc::DoSendDataToGroup
+ns3::Ipv4Header (tos 0x0 DSCP Default ECN Not-ECT ttl 61 id 0 protocol 17 offset (bytes) 0 flags [none] length: 228 7.0.0.2 > 7.0.0.3) ns3::UdpHeader (length: 208 49153 > 8000) Payload (size=200)
+In function LtePdcp::DoTransmitPdcpSdu
+ns3::Ipv4Header (tos 0x0 DSCP Default ECN Not-ECT ttl 61 id 0 protocol 17 offset (bytes) 0 flags [none] length: 228 7.0.0.2 > 7.0.0.3) ns3::UdpHeader (length: 208 49153 > 8000) Payload (size=200)
+In function LteRlcSpecificLteRlcSapProvider<C>::TransmitPdcpPdu
+ns3::LteSlPdcpHeader (SDU type=0 PGK Index=0 PTK/KD_SESS=0 SN=1) ns3::Ipv4Header (tos 0x0 DSCP Default ECN Not-ECT ttl 61 id 0 protocol 17 offset (bytes) 0 flags [none] length: 228 7.0.0.2 > 7.0.0.3) ns3::UdpHeader (length: 208 49153 > 8000) Payload (size=200)
+In function LteRlcUm::DoTransmitPdcpPdu
+ns3::LteSlPdcpHeader (SDU type=0 PGK Index=0 PTK/KD_SESS=0 SN=1) ns3::Ipv4Header (tos 0x0 DSCP Default ECN Not-ECT ttl 61 id 0 protocol 17 offset (bytes) 0 flags [none] length: 228 7.0.0.2 > 7.0.0.3) ns3::UdpHeader (length: 208 49153 > 8000) Payload (size=200)
+In function LteRlcUm::DoNotifyTxOpportunity
+Printing m_txBuffer:
+Completed printing m_txBuffer:
+In function LteRlcUm::DoNotifyTxOpportunity
+Printing m_txBuffer:
+Payload Fragment [158:200]
+waiting since: +3.24893e+09ns
+Completed printing m_txBuffer:
+In function LteRlcUm::DoNotifyTxOpportunity
+Printing m_txBuffer:
+Payload Fragment [158:200]
+waiting since: +3.24893e+09ns
+Completed printing m_txBuffer:
+In function LteUeMac::DoReceivePhyPdu
+ns3::LteRlcHeader (Len=2 FI=2 E=0 SN=4) Payload Fragment [114:200]
+In function LteNetDevice::Receive() for node Id 4
+ns3::Ipv4Header (tos 0x0 DSCP Default ECN Not-ECT ttl 62 id 0 protocol 17 offset (bytes) 0 flags [none] length: 228 7.0.0.2 > 7.0.0.3) ns3::UdpHeader (length: 208 49153 > 8000) Payload (size=200)
+Called the callback function Node::NonPromiscReceiveFromDevice
+4 Protocol 2048 Promiscuous 0
+Called the callback function Ipv4L3Protocol::Receive from m_handlers(Node Protocol Handler)
+Packet from 00-00-00 received on node 4
+In function Ipv4L3Protocol::Receive
+ipv4-list-routing.cc rounting input
+Node Id:4 retVal:1
+Pushed packet into m_deliveryQueue, UDPsocket::ForwardUp function
+In handle Read function
+In UDP::RecvFrom(maxsize,flags,&fromAddress)
+Payload (size=200)From Address:7.0.0.2
+Ipv4 PKTINFO [DestAddr: 7.0.0.3, RecvIf:0, TTL:62]  falsePayload (size=200)
+At time +3.28893s packet sink received 200 bytes from 7.0.0.2 port 49153 total Rx 1000 bytes
+In here
+1
+0
+In function LteUeMac::DoReceivePhyPdu
+ns3::LteRlcHeader (Len=2 FI=1 E=0 SN=2) ns3::LteSlPdcpHeader (SDU type=0 PGK Index=0 PTK/KD_SESS=0 SN=1) ns3::Ipv4Header (tos 0x0 DSCP Default ECN Not-ECT ttl 61 id 0 protocol 17 offset (bytes) 0 flags [none] length: 228 7.0.0.2 > 7.0.0.3) ns3::UdpHeader (length: 208 49153 > 8000) Payload Fragment [0:158]
+In function LteUeMac::DoReceivePhyPdu
+ns3::LteRlcHeader (Len=2 FI=1 E=0 SN=2) ns3::LteSlPdcpHeader (SDU type=0 PGK Index=0 PTK/KD_SESS=0 SN=1) ns3::Ipv4Header (tos 0x0 DSCP Default ECN Not-ECT ttl 61 id 0 protocol 17 offset (bytes) 0 flags [none] length: 228 7.0.0.2 > 7.0.0.3) ns3::UdpHeader (length: 208 49153 > 8000) Payload Fragment [0:158]
+In function LteRlcUm::DoNotifyTxOpportunity
+Printing m_txBuffer:
+Completed printing m_txBuffer:
+In function LteRlcUm::DoNotifyTxOpportunity
+Printing m_txBuffer:
+Completed printing m_txBuffer:
+In function LteUeMac::DoReceivePhyPdu
+ns3::LteRlcHeader (Len=2 FI=2 E=0 SN=3) Payload Fragment [158:200]
+In function LteUeMac::DoReceivePhyPdu
+ns3::LteRlcHeader (Len=2 FI=2 E=0 SN=3) Payload Fragment [158:200]
+In function LteUeMac::DoReceivePhyPdu
+ns3::LteRlcHeader (Len=2 FI=2 E=0 SN=3) Payload Fragment [158:200]
+In function LteNetDevice::Receive() for node Id 4
+ns3::Ipv4Header (tos 0x0 DSCP Default ECN Not-ECT ttl 61 id 0 protocol 17 offset (bytes) 0 flags [none] length: 228 7.0.0.2 > 7.0.0.3) ns3::UdpHeader (length: 208 49153 > 8000) Payload (size=200)
+Called the callback function Node::NonPromiscReceiveFromDevice
+4 Protocol 2048 Promiscuous 0
+Called the callback function Ipv4L3Protocol::Receive from m_handlers(Node Protocol Handler)
+Packet from 00-00-00 received on node 4
+In function Ipv4L3Protocol::Receive
+ipv4-list-routing.cc rounting input
+Node Id:4 retVal:1
+Pushed packet into m_deliveryQueue, UDPsocket::ForwardUp function
+In handle Read function
+In UDP::RecvFrom(maxsize,flags,&fromAddress)
+Payload (size=200)From Address:7.0.0.2
+Ipv4 PKTINFO [DestAddr: 7.0.0.3, RecvIf:0, TTL:61]  falsePayload (size=200)
+At time +3.32893s packet sink received 200 bytes from 7.0.0.2 port 49153 total Rx 1200 bytes
+In here
+1
+0
+In function LteUeMac::DoReceivePhyPdu
+ns3::LteRlcHeader (Len=2 FI=2 E=0 SN=3) Payload Fragment [158:200]
+In function LteNetDevice::Receive() for node Id 4
+ns3::Ipv4Header (tos 0x0 DSCP Default ECN Not-ECT ttl 61 id 0 protocol 17 offset (bytes) 0 flags [none] length: 228 7.0.0.2 > 7.0.0.3) ns3::UdpHeader (length: 208 49153 > 8000) Payload (size=200)
+Called the callback function Node::NonPromiscReceiveFromDevice
+4 Protocol 2048 Promiscuous 0
+Called the callback function Ipv4L3Protocol::Receive from m_handlers(Node Protocol Handler)
+Packet from 00-00-00 received on node 4
+In function Ipv4L3Protocol::Receive
+ipv4-list-routing.cc rounting input
+Node Id:4 retVal:1
+Pushed packet into m_deliveryQueue, UDPsocket::ForwardUp function
+In handle Read function
+In UDP::RecvFrom(maxsize,flags,&fromAddress)
+Payload (size=200)From Address:7.0.0.2
+Ipv4 PKTINFO [DestAddr: 7.0.0.3, RecvIf:0, TTL:61]  falsePayload (size=200)
+At time +3.32893s packet sink received 200 bytes from 7.0.0.2 port 49153 total Rx 1400 bytes
+In here
+1
+0
+
+
+
+
+replayFromIp function called
+ns3::Ipv4Header (tos 0x0 DSCP Default ECN Not-ECT ttl 64 id 0 protocol 17 offset (bytes) 0 flags [none] length: 228 7.0.0.2 > 7.0.0.3) ns3::UdpHeader (length: 208 49153 > 8000) Payload (size=200)
+ns3::Ipv4Header (tos 0x0 DSCP Default ECN Not-ECT ttl 62 id 0 protocol 17 offset (bytes) 0 flags [none] length: 228 7.0.0.2 > 7.0.0.3) ns3::UdpHeader (length: 208 49153 > 8000) Payload (size=200)
+header source received is 7.0.0.2
+header dest received is 7.0.0.3
+header dest changed is 225.0.0.0
+ns3::Ipv4Header (tos 0x0 DSCP Default ECN Not-ECT ttl 64 id 0 protocol 17 offset (bytes) 0 flags [none] length: 228 7.0.0.2 > 225.0.0.0) ns3::UdpHeader (length: 208 49153 > 8000) Payload (size=200)
+In function LteUeNetDevice::Send
+ns3::Ipv4Header (tos 0x0 DSCP Default ECN Not-ECT ttl 64 id 0 protocol 17 offset (bytes) 0 flags [none] length: 228 7.0.0.2 > 225.0.0.0) ns3::UdpHeader (length: 208 49153 > 8000) Payload (size=200)
+Send dest: 04-07-e1:00:00:00:40:1f:00
+Protocol Number: 2048
+in function epcuenas::send
