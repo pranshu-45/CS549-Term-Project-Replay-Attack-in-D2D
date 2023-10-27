@@ -394,7 +394,9 @@ EpcUeNas::DoRecvData (Ptr<Packet> packet)
   Ptr<Packet> pCopy = packet->Copy ();
   Ipv6Header ipv6Header;
   pCopy->RemoveHeader (ipv6Header);
-
+  packet->Print(std::cout);
+  std::cout << "\n";
+  
   for (std::list<SlCallbackInfo>::iterator it = m_slForwardUpCallbackList.begin ();
        it != m_slForwardUpCallbackList.end ();
        it++)

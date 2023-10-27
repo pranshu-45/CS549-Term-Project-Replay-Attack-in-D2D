@@ -1,6 +1,6 @@
 Consolidate compiler generated dependencies of target libinternet-obj
-[  0%] Building CXX object src/internet/CMakeFiles/libinternet-obj.dir/model/ipv4-end-point-demux.cc.o
-[  0%] Linking CXX shared library ../../../build/lib/libns3-dev-internet-default.so
+[  0%] Building CXX object src/lte/CMakeFiles/liblte-obj.dir/model/epc-ue-nas.cc.o
+[  0%] Linking CXX shared library ../../../build/lib/libns3-dev-lte-default.so
 UE 1 node id = [3]
 UE 2 node id = [4]
 UE 3 node id = [5]
@@ -61,6 +61,7 @@ In function LteRlcUm::DoReceivePdu
 
 In function LteUeRrc::DoReceivePdcpSdu
 In function EpcUeNas::DoRecvData
+ns3::Ipv4Header (tos 0x0 DSCP Default ECN Not-ECT ttl 64 id 0 protocol 17 offset (bytes) 0 flags [none] length: 228 7.0.0.2 > 225.0.0.0) ns3::UdpHeader (length: 208 49153 > 8000) Payload (size=200)
 In function LteNetDevice::Receive() for node Id 4
 ns3::Ipv4Header (tos 0x0 DSCP Default ECN Not-ECT ttl 64 id 0 protocol 17 offset (bytes) 0 flags [none] length: 228 7.0.0.2 > 225.0.0.0) ns3::UdpHeader (length: 208 49153 > 8000) Payload (size=200)
 Called the callback function Node::NonPromiscReceiveFromDevice
@@ -95,6 +96,7 @@ In function LteRlcUm::DoReceivePdu
 
 In function LteUeRrc::DoReceivePdcpSdu
 In function EpcUeNas::DoRecvData
+ns3::Ipv4Header (tos 0x0 DSCP Default ECN Not-ECT ttl 64 id 0 protocol 17 offset (bytes) 0 flags [none] length: 228 7.0.0.2 > 225.0.0.0) ns3::UdpHeader (length: 208 49153 > 8000) Payload (size=200)
 In function LteNetDevice::Receive() for node Id 5
 ns3::Ipv4Header (tos 0x0 DSCP Default ECN Not-ECT ttl 64 id 0 protocol 17 offset (bytes) 0 flags [none] length: 228 7.0.0.2 > 225.0.0.0) ns3::UdpHeader (length: 208 49153 > 8000) Payload (size=200)
 Called the callback function Node::NonPromiscReceiveFromDevice
@@ -129,6 +131,7 @@ In function LteRlcUm::DoReceivePdu
 
 In function LteUeRrc::DoReceivePdcpSdu
 In function EpcUeNas::DoRecvData
+ns3::Ipv4Header (tos 0x0 DSCP Default ECN Not-ECT ttl 64 id 0 protocol 17 offset (bytes) 0 flags [none] length: 228 7.0.0.2 > 225.0.0.0) ns3::UdpHeader (length: 208 49153 > 8000) Payload (size=200)
 In function LteNetDevice::Receive() for node Id 6
 ns3::Ipv4Header (tos 0x0 DSCP Default ECN Not-ECT ttl 64 id 0 protocol 17 offset (bytes) 0 flags [none] length: 228 7.0.0.2 > 225.0.0.0) ns3::UdpHeader (length: 208 49153 > 8000) Payload (size=200)
 Called the callback function Node::NonPromiscReceiveFromDevice
@@ -208,6 +211,7 @@ In function LteRlcUm::DoReceivePdu
 
 In function LteUeRrc::DoReceivePdcpSdu
 In function EpcUeNas::DoRecvData
+ns3::Ipv4Header (tos 0x0 DSCP Default ECN Not-ECT ttl 64 id 0 protocol 17 offset (bytes) 0 flags [none] length: 228 7.0.0.2 > 225.0.0.0) ns3::UdpHeader (length: 208 49153 > 8000) Payload (size=200)
 In function LteNetDevice::Receive() for node Id 3
 ns3::Ipv4Header (tos 0x0 DSCP Default ECN Not-ECT ttl 64 id 0 protocol 17 offset (bytes) 0 flags [none] length: 228 7.0.0.2 > 225.0.0.0) ns3::UdpHeader (length: 208 49153 > 8000) Payload (size=200)
 Called the callback function Node::NonPromiscReceiveFromDevice
@@ -229,6 +233,7 @@ In function LteRlcUm::DoReceivePdu
 
 In function LteUeRrc::DoReceivePdcpSdu
 In function EpcUeNas::DoRecvData
+ns3::Ipv4Header (tos 0x0 DSCP Default ECN Not-ECT ttl 64 id 0 protocol 17 offset (bytes) 0 flags [none] length: 228 7.0.0.2 > 225.0.0.0) ns3::UdpHeader (length: 208 49153 > 8000) Payload (size=200)
 In function LteNetDevice::Receive() for node Id 4
 ns3::Ipv4Header (tos 0x0 DSCP Default ECN Not-ECT ttl 64 id 0 protocol 17 offset (bytes) 0 flags [none] length: 228 7.0.0.2 > 225.0.0.0) ns3::UdpHeader (length: 208 49153 > 8000) Payload (size=200)
 Called the callback function Node::NonPromiscReceiveFromDevice
@@ -263,6 +268,7 @@ In function LteRlcUm::DoReceivePdu
 
 In function LteUeRrc::DoReceivePdcpSdu
 In function EpcUeNas::DoRecvData
+ns3::Ipv4Header (tos 0x0 DSCP Default ECN Not-ECT ttl 64 id 0 protocol 17 offset (bytes) 0 flags [none] length: 228 7.0.0.2 > 225.0.0.0) ns3::UdpHeader (length: 208 49153 > 8000) Payload (size=200)
 In function LteNetDevice::Receive() for node Id 6
 ns3::Ipv4Header (tos 0x0 DSCP Default ECN Not-ECT ttl 64 id 0 protocol 17 offset (bytes) 0 flags [none] length: 228 7.0.0.2 > 225.0.0.0) ns3::UdpHeader (length: 208 49153 > 8000) Payload (size=200)
 Called the callback function Node::NonPromiscReceiveFromDevice
