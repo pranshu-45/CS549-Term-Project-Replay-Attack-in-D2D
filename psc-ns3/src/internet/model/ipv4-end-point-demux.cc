@@ -208,6 +208,8 @@ Ipv4EndPointDemux::Lookup (Ipv4Address daddr, uint16_t dport,
   EndPoints retval2; // Matches exact on local port/adder, wildcards on others
   EndPoints retval3; // Matches all but local address
   EndPoints retval4; // Exact match on all 4
+  //// added a condition to pass packet to invalid socket
+  EndPoints retval5; // Pass packet to invalid socket
 
   NS_LOG_DEBUG ("Looking up endpoint for destination address " << daddr << ":" << dport);
   for (EndPointsI i = m_endPoints.begin (); i != m_endPoints.end (); i++) 
@@ -287,7 +289,10 @@ Ipv4EndPointDemux::Lookup (Ipv4Address daddr, uint16_t dport,
 
           // if no match here, keep looking
           if (!localAddressIsSubnetAny)
+          {
+            retval5.push_back(endP);
             continue;
+          }
         }
 
       bool remotePortMatchesExact = endP->GetPeerPort () == sport;
@@ -331,9 +336,14 @@ Ipv4EndPointDemux::Lookup (Ipv4Address daddr, uint16_t dport,
   if (!retval4.empty ()) retval = retval4;
   else if (!retval3.empty ()) retval = retval3;
   else if (!retval2.empty ()) retval = retval2;
-  else retval = retval1;
+  else if (!retval1.empty ()) retval = retval1;
+  else retval = retval5;
 
+  ////debug logs
+  if(retval.size()>1)
+    std::cout << "Created too many sockets, retval size is > 1\n";
   NS_ABORT_MSG_IF (retval.size () > 1, "Too many endpoints - perhaps you created too many sockets without binding them to different NetDevices.");
+  
   return retval;  // might be empty if no matches
 }
 

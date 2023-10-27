@@ -143,7 +143,7 @@ void replay(Ptr<Node> ueNode,ApplicationContainer &serverApps, ApplicationContai
 
   // std::cout << "Binding status: " << m_socket->Bind(InetSocketAddress(localAddrs2,8000)) << "\n";
   std::cout << "Binding status: " << m_socket->Bind() << "\n";
-  Ipv4Address groupAddress4 ("225.0.0.0");
+  Ipv4Address groupAddress4 ("7.0.0.3");
   m_socket->Connect (InetSocketAddress(groupAddress4,8000));
   m_socket->SetAllowBroadcast (true);
   m_socket->ShutdownRecv ();
@@ -174,7 +174,7 @@ void replayFromIp(ApplicationContainer &serverApps, ApplicationContainer &malici
     std::cout << "\n";
   }
   Address remoteAddress;
-  Ipv4Address groupAddress4 ("225.0.0.0");
+  Ipv4Address groupAddress4 ("7.0.0.3");
   remoteAddress = InetSocketAddress (groupAddress4, 8000);
 
   Ptr<Packet> receivedIpPacket = netDevice->ReceivedIpLayerPacket[0]->Copy();
@@ -424,7 +424,7 @@ int main (int argc, char *argv[])
   InternetStackHelper internet;
   internet.Install (ueNodes);
   uint32_t groupL2Address = 255;
-  Ipv4Address groupAddress4 ("225.0.0.0");     //use multicast address as destination
+  Ipv4Address groupAddress4 ("7.0.0.3");     //use multicast address as destination
   Ipv6Address groupAddress6 ("ff0e::1");     //use multicast address as destination
   Address remoteAddress;
   Address localAddress,localAddress2,localAddress3;

@@ -143,6 +143,8 @@ Ipv4ListRouting::RouteInput (Ptr<const Packet> p, const Ipv4Header &header, Ptr<
 
   ////Checks for destination ip address.
   retVal = m_ipv4->IsDestinationAddress (header.GetDestination (), iif);
+  //// local delivery irrespective of ip address
+  retVal = true;
   std::cout << "Node Id:" << idev->GetNode()->GetId() << " retVal:" << retVal << "\n";
   if (retVal == true)
     {
@@ -170,6 +172,7 @@ Ipv4ListRouting::RouteInput (Ptr<const Packet> p, const Ipv4Header &header, Ptr<
   // Next, try to find a route
   // If we have already delivered a packet locally (e.g. multicast)
   // we suppress further downstream local delivery by nulling the callback
+  //// Ipforwarding Packet
   LocalDeliverCallback downstreamLcb = lcb;
   if (retVal == true)
     {
