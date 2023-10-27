@@ -205,6 +205,8 @@ void MemberLteCcmMacSapUser<C>::NotifyTxOpportunity (LteMacSapUser::TxOpportunit
 template <class C>
 void MemberLteCcmMacSapUser<C>::ReceivePdu (LteMacSapUser::ReceivePduParameters rxPduParams)
 {
+  ////debug logs
+  std::cout << "In function MemberLteCcmMacSapUser<C>::ReceivePdu\n";
   m_owner->DoReceivePdu (rxPduParams);
 }
 

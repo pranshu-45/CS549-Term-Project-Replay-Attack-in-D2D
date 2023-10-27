@@ -200,6 +200,8 @@ Ipv4EndPointDemux::Lookup (Ipv4Address daddr, uint16_t dport,
                            Ipv4Address saddr, uint16_t sport,
                            Ptr<Ipv4Interface> incomingInterface)
 {
+  ////debug logs
+  std::cout << "Ipv4EndPointDemux::Lookup. Checking of Ip address, Port, Net-device takes place here.\n";
   NS_LOG_FUNCTION (this << daddr << dport << saddr << sport << incomingInterface);
   
   EndPoints retval1; // Matches exact on local port, wildcards on others

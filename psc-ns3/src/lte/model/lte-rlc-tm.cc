@@ -169,7 +169,9 @@ void
 LteRlcTm::DoReceivePdu (LteMacSapUser::ReceivePduParameters rxPduParams)
 {
   NS_LOG_FUNCTION (this << m_rnti << (uint32_t) m_lcid << rxPduParams.p->GetSize ());
-
+  ////debug logs
+  std::cout << "In function LteRlcTm::DoReceivePdu\n";
+  
   m_rxPdu (m_rnti, m_lcid, rxPduParams.p->GetSize (), 0);
 
   // 5.1.1.2 Receive operations

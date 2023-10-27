@@ -436,6 +436,8 @@ TcpL4Protocol::Receive (Ptr<Packet> packet,
                         Ipv4Header const &incomingIpHeader,
                         Ptr<Ipv4Interface> incomingInterface)
 {
+  ////debug logs
+  std::cout << "In function TcpL4Protocol::Receive\n";
   NS_LOG_FUNCTION (this << packet << incomingIpHeader << incomingInterface);
 
   TcpHeader incomingTcpHeader;

@@ -453,6 +453,9 @@ LteRlcUm::DoReceivePdu (LteMacSapUser::ReceivePduParameters rxPduParams)
 {
   NS_LOG_FUNCTION (this << m_rnti << (uint32_t) m_lcid << rxPduParams.p->GetSize ());
 
+  ////debug logs
+  std::cout << "In function LteRlcUm::DoReceivePdu\n\n";
+
   // Receiver timestamp
   RlcTag rlcTag;
   Time delay;

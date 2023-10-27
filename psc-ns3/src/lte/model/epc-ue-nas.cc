@@ -388,7 +388,8 @@ void
 EpcUeNas::DoRecvData (Ptr<Packet> packet)
 {
   NS_LOG_FUNCTION (this << packet);
-
+  ////debug logs
+  std::cout << "In function EpcUeNas::DoRecvData\n";
   //Check maps for sidelink
   Ptr<Packet> pCopy = packet->Copy ();
   Ipv6Header ipv6Header;

@@ -1138,7 +1138,7 @@ void
 LteUeMac::DoReceivePhyPdu (Ptr<Packet> p)
 {
   //// Receiving packet in the physical layer state
-  std::cout << "In function LteUeMac::DoReceivePhyPdu\n";
+  std::cout << "In function LteUeMac::DoReceivePhyPdu for node " <<"\n";
   Ptr<Packet> dup = p->Copy();
   MacReceivedPacket.push_back(dup);
   // std::cout << "\n";

@@ -319,6 +319,9 @@ UdpL4Protocol::Receive (Ptr<Packet> packet,
                         Ipv4Header const &header,
                         Ptr<Ipv4Interface> interface)
 {
+  ////debug log
+  std::cout << "In function UdpL4Protocol::Receive\n";
+
   NS_LOG_FUNCTION (this << packet << header);
   UdpHeader udpHeader;
   if(Node::ChecksumEnabled ())
@@ -345,6 +348,16 @@ UdpL4Protocol::Receive (Ptr<Packet> packet,
   Ipv4EndPointDemux::EndPoints endPoints =
     m_endPoints->Lookup (header.GetDestination (), udpHeader.GetDestinationPort (),
                          header.GetSource (), udpHeader.GetSourcePort (), interface);
+
+  std::cout << "Listing all endpoints for the device\n";
+  for(auto x:m_endPoints->GetAllEndPoints())
+  {
+    std::cout << "x->GetLocalAddress(): " << x->GetLocalAddress() << "\n" <<
+                "x->GetLocalPort(): " << x->GetLocalPort() << "\n" <<
+                "x->GetPeerAddress(): " << x->GetPeerAddress() << "\n" <<
+                "x->GetPeerPort(): " << x->GetPeerPort() << "\n";
+  }
+                      
   if (endPoints.empty ())
     {
       if (this->GetObject<Ipv6L3Protocol> () != 0)

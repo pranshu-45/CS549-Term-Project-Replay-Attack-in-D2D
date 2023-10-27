@@ -263,6 +263,9 @@ Icmpv4L4Protocol::Receive (Ptr<Packet> p,
                            Ipv4Header const &header,
                            Ptr<Ipv4Interface> incomingInterface)
 {
+  ////debug logs
+  std::cout << "In function Icmpv4L4Protocol::Receive\n";
+
   NS_LOG_FUNCTION (this << p << header << incomingInterface);
 
   Icmpv4Header icmp;

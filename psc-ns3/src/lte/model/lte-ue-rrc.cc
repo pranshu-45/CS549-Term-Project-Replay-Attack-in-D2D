@@ -790,7 +790,8 @@ void
 LteUeRrc::DoReceivePdcpSdu (LtePdcpSapUser::ReceivePdcpSduParameters params)
 {
   NS_LOG_FUNCTION (this);
-
+  ////debug logs
+  std::cout << "In function LteUeRrc::DoReceivePdcpSdu\n";
   switch (params.sduType)
     {
     case LtePdcpSapUser::IP_SDU:

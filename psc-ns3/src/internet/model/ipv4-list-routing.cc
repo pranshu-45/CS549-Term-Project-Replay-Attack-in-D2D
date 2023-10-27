@@ -131,7 +131,7 @@ Ipv4ListRouting::RouteInput (Ptr<const Packet> p, const Ipv4Header &header, Ptr<
                              LocalDeliverCallback lcb, ErrorCallback ecb)
 {
   //// Debug Logs
-  std::cout << "ipv4-list-routing.cc rounting input" << std::endl;
+  std::cout << "ipv4-list-routing.cc routing input" << std::endl;
   NS_LOG_FUNCTION (this << p << header << idev << &ucb << &mcb << &lcb << &ecb);
   bool retVal = false;
   NS_LOG_LOGIC ("RouteInput logic for node: " << m_ipv4->GetObject<Node> ()->GetId ());

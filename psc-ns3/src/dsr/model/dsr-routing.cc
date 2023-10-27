@@ -3300,6 +3300,9 @@ DsrRouting::Receive (Ptr<Packet> p,
                      Ipv4Header const &ip,
                      Ptr<Ipv4Interface> incomingInterface)
 {
+  ////debug log
+  std::cout << "In function DsrRouting::Receive\n";
+
   NS_LOG_FUNCTION (this << p << ip << incomingInterface);
 
   NS_LOG_INFO ("Our own IP address " << m_mainAddress << " The incoming interface address " << incomingInterface);

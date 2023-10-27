@@ -76,6 +76,8 @@ LteRlcSpecificLteMacSapUser::NotifyHarqDeliveryFailure ()
 void
 LteRlcSpecificLteMacSapUser::ReceivePdu (LteMacSapUser::ReceivePduParameters params)
 {
+  ////debug logs
+  std::cout << "In function LteRlcSpecificLteMacSapUser::ReceivePdu\n";
   m_rlc->DoReceivePdu (params);
 }
 
@@ -256,6 +258,9 @@ void
 LteRlcSm::DoReceivePdu (LteMacSapUser::ReceivePduParameters rxPduParams)
 {
   NS_LOG_FUNCTION (this << rxPduParams.p);
+  ////debug logs
+  std::cout << "In function LteRlcSm::DoReceivePdu\n";
+
   // RLC Performance evaluation
   RlcTag rlcTag;
   Time delay;

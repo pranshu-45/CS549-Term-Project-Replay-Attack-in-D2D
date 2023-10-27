@@ -598,6 +598,7 @@ Ipv4L3Protocol::Receive ( Ptr<NetDevice> device, Ptr<const Packet> p, uint16_t p
     }
   else
     {
+      std::cout << "Dropping received packet -- interface is down\n";
       NS_LOG_LOGIC ("Dropping received packet -- interface is down");
       Ipv4Header ipHeader;
       packet->RemoveHeader (ipHeader);
@@ -1035,6 +1036,8 @@ Ipv4L3Protocol::SendRealOut (Ptr<Ipv4Route> route,
 void
 Ipv4L3Protocol::IpMulticastForward (Ptr<Ipv4MulticastRoute> mrtentry, Ptr<const Packet> p, const Ipv4Header &header)
 {
+  ////debug logs
+  std::cout << "In function Ipv4L3Protocol::IpMulticastForward\n";
   NS_LOG_FUNCTION (this << mrtentry << p << header);
   NS_LOG_LOGIC ("Multicast forwarding logic for node: " << m_node->GetId ());
 
@@ -1072,6 +1075,8 @@ Ipv4L3Protocol::IpMulticastForward (Ptr<Ipv4MulticastRoute> mrtentry, Ptr<const 
 void
 Ipv4L3Protocol::IpForward (Ptr<Ipv4Route> rtentry, Ptr<const Packet> p, const Ipv4Header &header)
 {
+  ////debug logs
+  std::cout << "In function Ipv4L3Protocol::IpForward\n";
   NS_LOG_FUNCTION (this << rtentry << p << header);
   NS_LOG_LOGIC ("Forwarding logic for node: " << m_node->GetId ());
   // Forwarding
@@ -1110,6 +1115,8 @@ Ipv4L3Protocol::IpForward (Ptr<Ipv4Route> rtentry, Ptr<const Packet> p, const Ip
 void
 Ipv4L3Protocol::LocalDeliver (Ptr<const Packet> packet, Ipv4Header const&ip, uint32_t iif)
 {
+  ////debug logs
+  std::cout << "In function Ipv4L3Protocol::LocalDeliver\n";
   NS_LOG_FUNCTION (this << packet << &ip << iif);
   Ptr<Packet> p = packet->Copy (); // need to pass a non-const packet up
   Ipv4Header ipHeader = ip;
@@ -1138,6 +1145,7 @@ Ipv4L3Protocol::LocalDeliver (Ptr<const Packet> packet, Ipv4Header const&ip, uin
       Ptr<Packet> copy = p->Copy ();
       enum IpL4Protocol::RxStatus status = 
         protocol->Receive (p, ipHeader, GetInterface (iif));
+      std::cout << "protocol->Receive (p, ipHeader, GetInterface (iif)) = " << status << "\n";
       switch (status) {
         case IpL4Protocol::RX_OK:
         // fall through
@@ -1448,6 +1456,8 @@ Ipv4L3Protocol::GetWeakEsModel (void) const
 void
 Ipv4L3Protocol::RouteInputError (Ptr<const Packet> p, const Ipv4Header & ipHeader, Socket::SocketErrno sockErrno)
 {
+  ////debug logs
+  std::cout << "In function Ipv4L3Protocol::RouteInputError\n";
   NS_LOG_FUNCTION (this << p << ipHeader << sockErrno);
   NS_LOG_LOGIC ("Route input failure-- dropping packet to " << ipHeader << " with errno " << sockErrno); 
   m_dropTrace (ipHeader, p, DROP_ROUTE_ERROR, this, 0);
